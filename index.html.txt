@@ -1,0 +1,818 @@
+index.html
+
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="초등교사를 위한 담당 업무·교과별 AI 활용 사례와 맞춤 프롬프트"><title>초등 AI 교무실 · 수업에 여유를 더하다</title><link rel="stylesheet" href="style.css"></head><body>
+
+<a class="skip" href="#main">본문 바로가기</a><aside id="sidebar"><a class="brand" href="#"><span class="logo">✳</span><span>초등 AI 교무실<small>TEACHER’S WORKSPACE</small></span></a><div class="sidebar-filters"><div class="side-filter-row"><label>업무<select id="workrole" aria-label="담당 업무 선택"></select></label><label>과목<select id="side-subject" aria-label="초등 과목 선택"></select></label></div><label class="side-search-label"><span class="sr">사례 검색</span><input id="side-search" type="search" placeholder="사례 검색: 예) 상담, 엑셀, 리듬"></label><button id="side-reset" class="text-button">선택·검색 초기화 ↺</button></div>
+
+<nav aria-label="주 메뉴"><button data-view="home" class="nav active"><span class="nav-number">⌂</span><span>표지</span></button><button data-view="custom" class="nav"><span class="nav-number">★</span><span>나의 맞춤 활용</span></button><button data-view="summary" class="nav"><span class="nav-number">01</span><span>한눈에 보는 결론</span></button><button data-view="pricing" class="nav"><span class="nav-number">02</span><span>요금·기능 비교</span></button><button data-view="fit" class="nav"><span class="nav-number">03</span><span>학교 업무별 적합도 평가</span></button><div class="case-nav-heading"><button data-view="cases" class="nav"><span class="nav-number">04</span><span>활용 사례 둘러보기</span><b id="navcasecount">52</b></button><button id="case-subnav-toggle" class="case-subnav-toggle" type="button" aria-controls="case-subnav" aria-expanded="true" aria-label="하위 카테고리 접기"><span aria-hidden="true">⌄</span></button></div><div id="case-subnav" class="case-subnav" role="group" aria-label="활용 사례 업무별 바로가기"></div><button data-view="tools" class="nav"><span class="nav-number">05</span><span>도구별 핵심 기능 사용법</span></button><button data-view="recommend" class="nav"><span class="nav-number">06</span><span>추천 조합·활용 로드맵</span></button><button data-view="check" class="nav"><span class="nav-number">07</span><span>주의점·사용 전 확인</span></button><div class="nav-divider"></div><button data-view="favorites" class="nav">☆ <span>저장한 사례</span><b id="favcount">0</b></button><button data-view="builder" class="nav">✎ <span>맞춤 프롬프트 만들기</span></button></nav><div class="sidebar-note"><span>작은 업무는 가볍게,<br>아이들의 배움은 깊게.</span><p>선생님의 판단과 관찰을<br>중심에 두는 AI 활용</p></div><div class="side-bottom">초등 1–6학년 · 교사용<br><span>첨부 자료의 구성에서 초등용으로 재설계</span></div></aside>
+
+<div class="shell"><header><button id="menu" aria-label="메뉴 열기" aria-expanded="false">☰</button><span id="breadcrumb">교무실 / 표지</span><span class="header-right"><i></i> 선생님을 위한 작업 공간</span><div class="readability-controls" role="group" aria-label="글자 크기 설정"><span>글자 크기</span><button type="button" class="size-button" data-text-size="normal" aria-label="기본 글씨" aria-pressed="true">기본</button><button type="button" class="size-button" data-text-size="large" aria-label="큰 글씨" aria-pressed="false">크게</button></div></header><main id="main" tabindex="-1"><section id="homeview"><section class="hero"><div class="hero-copy"><div class="eyebrow">LESS PREP, MORE LEARNING</div><h1>수업 준비에 여유를,<br>아이들의 배움에 깊이를.</h1><p>우리 학년, 우리 교과에 맞는 AI 활용법.<br>업무·교과·학년군별로 찾고, 고치고, 바로 시작해 보세요.</p><button class="primary" id="start">내 수업 프롬프트 만들기 <span>↗</span></button></div><div class="hero-art" aria-hidden="true"><div class="orbit o1"></div><div class="orbit o2"></div><div class="art-note"><span>오늘의 수업</span><b>생각하고<br>만들고<br><em>함께 배우기</em></b><div class="note-line"></div><div class="note-line short"></div></div><span class="art-star">✳</span><span class="art-pencil">✎</span><div class="art-tag">생각을 여는 질문 +1</div><div class="art-small">Aa<span>배움의 시작</span></div></div></section>
+
+<div class="stats"><div><b><span data-case-total class="case-total-number">76</span><span>가지</span></b><span>초등 현장 활용 사례</span></div><div><b>1–6<span>학년</span></b><span>학년 수준 맞춤 요청</span></div><div><b>40<span>분</span></b><span>초등 수업의 기본 단위</span></div><p>AI는 초안을 돕고,<br><strong>선생님은 배움을 설계합니다.</strong></p></div>
+
+<div class="home-links"><button data-route="custom"><small>START HERE</small><b>나의 맞춤 활용</b><span>담당 업무와 과목에 맞는 사례 찾기 ↗</span></button><button data-route="summary"><small>THE OVERVIEW</small><b>한눈에 보는 결론</b><span>세 도구를 어떻게 선택할까? ↗</span></button><button data-route="cases"><small>ROLE-BASED PRACTICAL IDEAS</small><b>활용 사례 둘러보기</b><span>수업부터 학교 업무까지 ↗</span></button></div><div class="panel info-panel"><h3>이렇게 시작하세요.</h3><p>① 왼쪽에서 업무·과목 선택 또는 검색 → ② 나의 맞춤 활용에서 사례 선택 → ③ 프롬프트 편집·복사 → ④ AI 결과를 교사가 확인합니다.</p><p>1~2학년은 통합교과 중심으로, 3~6학년은 해당 학년의 교과와 학습 범위에 맞춰 조정하세요.</p></div></section>
+
+<section id="customview" hidden><div class="section-heading"><div><div class="eyebrow">MY TEACHING WORKSPACE</div><h2>나의 맞춤 활용</h2><p>담당 업무와 초등 교과를 선택하면 관련 사례를 모아 보여 드립니다.</p></div></div><div class="selection-bar" id="selection-summary" aria-live="polite"></div><p id="matching-rule" class="matching-rule"></p><div class="filter-clear-row"><span>선택 해제:</span><button class="text-button" data-clear-filter="role">업무</button><button class="text-button" data-clear-filter="subject">과목</button><button class="text-button" data-clear-filter="grade">학년</button><button class="text-button" data-clear-filter="search">검색어</button></div><div id="customintro" class="panel custom-intro"><span class="badge">나에게 필요한 사례부터</span><h3>어떤 일을 맡고 계신가요?</h3><p>왼쪽의 업무·과목 선택이나 검색을 이용하세요. 담당 업무는 실제 담당자의 산출물을, 과목은 해당 교과 자료를 고릅니다. 두 조건을 함께 선택하면 교집합만 보여 줍니다.</p><div id="rolequick" class="chips"></div></div><div id="customcount" class="results-row" aria-live="polite"></div><div id="customgrid" class="custom-groups"></div><div id="customempty" class="empty" hidden><b>선택한 조건에 맞는 사례가 없어요.</b><p>선택한 업무에 이 과목·검색어가 동시에 맞는 사례가 없습니다. 무관한 사례로 대신 채우지 않습니다.</p><div class="button-row"><button class="secondary" data-clear-filter="subject">과목 조건만 해제</button><button class="secondary" data-clear-filter="search">검색어만 지우기</button><button class="secondary" data-clear-filter="grade">학년 조건만 해제</button></div><button id="customclear" class="secondary">선택·검색 초기화</button></div></section>
+
+<section id="summaryview" hidden><div class="section-heading"><div><div class="eyebrow">01 · THE OVERVIEW</div><h2>한눈에 보는 결론</h2><p>무엇을 만들고, 어떤 업무 환경에서 쓸지 먼저 정하세요.</p></div></div><div class="callout"><b>세 도구 모두 초안을 만드는 출발점입니다.</b><p>동일한 가상 자료로 결과를 받아 보고, 정확성·수정 시간·이동 편의성을 비교하세요. 교사의 관찰과 판단이 최종 기준입니다.</p></div><div class="toolgrid"><article class="panel"><div class="tool-icon terracotta">C</div><h3>문서와 활동지 중심</h3><p>Claude에서 긴 자료의 구조화, 일관된 문체, 웹 활동지 초안을 먼저 시험해 보세요.</p><b class="muted">예: 학년 협의 메모 → 계획서 초안</b></article><article class="panel"><div class="tool-icon green">G</div><h3>다양한 수업 자료 중심</h3><p>ChatGPT에서 대화, 이미지, 파일 분석을 수업 준비 과정에 연결해 보세요.</p><b class="muted">예: 가상 설문 → 표 해석 → 수업 질문</b></article><article class="panel"><div class="tool-icon blue">✧</div><h3>구글 업무 환경 중심</h3><p>Gemini와 학교 계정의 구글 앱 연결 범위를 확인하고 공동 문서 업무에 적용해 보세요.</p><b class="muted">예: 학년 의견 → 협의표 → 공동 편집</b></article></div><div class="panel info-panel"><h3>초등교사에게 먼저 권하는 세 가지</h3><ol><li>수업 준비: 지도안·활동지·과정중심 평가를 한 흐름으로 설계하기</li><li>학급 운영: 안내문·상담 준비·제출 현황을 가상 자료로 연습하기</li><li>학교 업무: 공문 요약·회의록·할 일 정리에서 작은 반복 업무 줄이기</li></ol><div class="button-row"><button class="primary" data-route="custom">내 업무에 맞는 사례 보기 ↗</button><button class="secondary" data-route="fit">업무별 적합도 살펴보기</button></div></div></section>
+
+<section id="pricingview" hidden><div class="section-heading"><div><div class="eyebrow">02 · PLANS & FEATURES</div><h2>요금·기능 비교</h2><p>2026.10.26. 공식 안내 확인 · 개인용 기본 유료 플랜 중심</p></div></div><p class="table-hint">표가 화면보다 넓으면 좌우로 움직여 확인하세요.</p><div class="table-wrap" tabindex="0" role="region" aria-label="좌우로 이동할 수 있는 비교표"><table class="comparison"><caption>개인용 요금과 수업·업무 활용 기능</caption><thead><tr><th scope="col">비교 항목</th><th scope="col">Claude Pro</th><th scope="col">ChatGPT Plus</th><th scope="col">Google AI Pro</th></tr></thead><tbody><tr><th scope="row">기본 요금</th><td>월별 결제 US$20<br>연간 US$200 선결제<br><small>공식 표시 월 환산 약 US$17</small></td><td>US$20 / 월<br><small>웹 기본 요금 기준</small></td><td>공식 결제 화면 확인<br><small>이번에 확인한 공개 본문에는 Pro 금액이 표시되지 않아 고정 가격을 적지 않았습니다.</small></td></tr><tr><th scope="row">문서·자료 작업</th><td>파일 생성, 프로젝트, 아티팩트</td><td>파일 업로드·분석, 대화로 초안 수정</td><td>Gemini 앱, 구글 앱에서 활용<br><small>학교 계정·계약별 적용 범위 확인</small></td></tr><tr><th scope="row">창작·수업 자료</th><td>문서·웹 활동지 구상</td><td>이미지 생성·음성 대화</td><td>이미지·영상 기능, Canvas·Gems<br><small>기능별 한도·계정 조건 확인</small></td></tr><tr><th scope="row">자료 조사</th><td>웹 검색·리서치</td><td>Deep Research 등<br><small>제공 범위에 따라 이용</small></td><td>Deep Research 등<br><small>실제 출처는 원문 대조</small></td></tr><tr><th scope="row">꼭 확인할 점</th><td>사용량 한도·세금·결제 경로</td><td>사용량 한도·계정별 기능<br>API 이용료는 별도</td><td>개인 구독과 교육용 계약 구분<br>기능·한도·지역별 가격</td></tr></tbody></table></div><div class="callout"><b>실제 청구액은 결제 화면을 기준으로 확인하세요.</b><p>환율·세금·지역·웹/앱 결제 경로·프로모션에 따라 다를 수 있습니다. 학교·교육청에서 제공하는 계정과 계약도 먼저 확인하세요. 이 표는 자동 갱신되지 않습니다.</p></div><div class="panel source-panel"><h3>공식 확인 출처</h3><a href="https://claude.com/ko/pricing" target="_blank" rel="noopener noreferrer">Claude 공식 요금·기능 ↗</a><a href="https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus" target="_blank" rel="noopener noreferrer">ChatGPT Plus 공식 안내 ↗</a><a href="https://gemini.google/kr/subscriptions/?hl=ko" target="_blank" rel="noopener noreferrer">Google AI 공식 구독 안내 ↗</a></div></section>
+
+<section id="fitview" hidden><div class="section-heading"><div><div class="eyebrow">03 · TASK FIT</div><h2>학교 업무별 적합도 평가</h2><p>업무 환경을 기준으로 한 활용 제안입니다. 실측 성능 순위나 정확도 평가가 아닙니다.</p></div></div><div class="fit-legend"><span><b>A</b> 먼저 시험할 도구</span><span><b>B</b> 함께 비교할 도구</span><span><b>C</b> 별도 기능·계약 확인</span></div><p class="table-hint">표가 화면보다 넓으면 좌우로 움직여 확인하세요.</p><div class="table-wrap" tabindex="0" role="region" aria-label="좌우로 이동할 수 있는 비교표"><table class="comparison"><caption>초등 학교 업무와 AI 도구 활용의 출발점</caption><thead><tr><th scope="col">업무</th><th scope="col">Claude</th><th scope="col">ChatGPT</th><th scope="col">Gemini</th><th scope="col">판단 기준</th></tr></thead><tbody id="fitrows"></tbody></table></div><div class="panel info-panel"><h3>우리 학교에서 직접 비교하는 방법</h3><p>동일한 가상 자료와 요구 조건을 넣고 ① 사실 오류 ② 빠진 조건 ③ 교사가 고치는 시간 ④ 파일·앱으로 옮기는 과정을 기록하세요. A는 반드시 더 정확하다는 뜻이 아니며 C도 업무를 할 수 없다는 뜻이 아닙니다.</p><button class="secondary" data-route="cases">관련 활용 사례 찾아보기</button></div></section>
+
+<section id="recommendview" hidden><div class="section-heading"><div><div class="eyebrow">06 · YOUR NEXT STEP</div><h2>추천 조합·활용 로드맵</h2><p>주 도구 하나로 시작하고, 필요한 작업만 다른 도구로 보완하세요.</p></div></div><div class="recommend-grid"><article class="panel"><span class="badge">수업 준비</span><h3>설계 도구 + 시각 자료 도구</h3><p>지도안·활동지는 익숙한 도구로 만들고, 이미지가 필요할 때 지원되는 도구를 더합니다.</p><button class="secondary" data-category-route="수업·평가">수업·평가 사례 ↗</button></article><article class="panel"><span class="badge">담임·학년 업무</span><h3>초안 도구 + 학교 문서 환경</h3><p>가정통신문·협의록을 만든 뒤 학교 양식에서 일정·담당·절차를 확인합니다.</p><button class="secondary" data-category-route="학급·행정">학급·행정 사례 ↗</button></article><article class="panel"><span class="badge">기록·상담</span><h3>관찰 메모 + 문장 점검</h3><p>확인된 관찰만 활용하고, AI가 활동이나 성격을 덧붙이지 않았는지 살펴봅니다.</p><button class="secondary" data-category-route="기록·상담">기록·상담 사례 ↗</button></article><article class="panel"><span class="badge">구글 환경</span><h3>Gemini + 공동 문서·시트</h3><p>학교 계정에서 이용 가능한 기능을 확인하고, 문항·표·협의 틀을 공동 작업에 옮깁니다.</p><button class="secondary" data-route="tools">핵심 기능 사용법 ↗</button></article></div><div class="panel info-panel"><h3>처음 시작하는 4주</h3><div class="roadmap"><div><b>1주 · 비교</b><p>동일한 가상 안내문을 두 도구로 작성하기</p></div><div><b>2주 · 적용</b><p>교사가 검토한 작은 업무 하나에 적용하기</p></div><div><b>3주 · 반복</b><p>자주 쓰는 지침과 참고 자료 정리하기</p></div><div><b>4주 · 돌아보기</b><p>수정 시간과 오류를 기록하고 활용법 조정하기</p></div></div></div></section>
+
+<section id="caseview" hidden><div class="section-heading"><div><div class="eyebrow">IDEAS FOR YOUR CLASSROOM</div><h2 id="caseheading">어떤 일을 도와드릴까요?</h2></div><button class="text-button" id="reset">필터 초기화 ↺</button></div><div id="case-selection" class="selection-bar" aria-live="polite"></div><div class="filters"><label class="search"><span>⌕</span><input id="search" type="search" placeholder="분수, 학부모, 평가… 필요한 일을 검색하세요" aria-label="사례 검색"></label><label><span class="sr">학년</span><select id="grade"><option value="">모든 학년</option><option>1학년</option><option>2학년</option><option>3학년</option><option>4학년</option><option>5학년</option><option>6학년</option></select></label><label><span class="sr">교과</span><select id="subject"><option value="">모든 교과</option><option>통합</option><option>국어</option><option>수학</option><option>도덕</option><option>사회</option><option>과학</option><option>실과</option><option>체육</option><option>음악</option><option>영어</option><option>미술</option><option>창체</option></select></label></div><div id="categories" class="chips" aria-label="업무 영역"></div><div class="group-toolbar"><label for="groupby">분류 기준 <select id="groupby"><option value="category">업무 영역별</option><option value="subject">교과별</option><option value="bands">학년군별</option></select></label><span id="groupcount" aria-live="polite"></span></div><div class="results-row"><span id="resultcount" aria-live="polite"></span><span>분류 선택 → 사례 선택 → 프롬프트 활용</span></div><div class="group-list" id="grid"></div><div id="empty" hidden class="empty"><b>해당하는 사례가 아직 없어요.</b><p>현재 적용한 업무·과목·학년·검색·분류 조건을 확인해 주세요. 선택을 유지한 채 다른 분류로 이동할 수 있습니다.</p><button class="secondary" id="emptyreset">모든 조건을 지우고 전체 보기</button></div></section>
+
+<section id="builderview" hidden><div class="section-heading"><div><div class="eyebrow">MAKE IT YOURS</div><h2>수업과 업무에 맞게 요청하기</h2><p>필요한 조건을 채워 프롬프트를 만드세요.</p></div></div><div class="builder-layout"><form id="builderform" class="panel"><label>작업 종류<select id="bmode"><option value="teaching">수업 자료</option><option value="work">학교 업무 문서</option></select></label><p id="builder-role-note" class="muted"></p><label id="bgrade-wrap">학년<select id="bgrade"><option>1학년</option><option>2학년</option><option>3학년</option><option>4학년</option><option selected>5학년</option><option>6학년</option></select></label><label id="bsubject-wrap">교과<select id="bsubject"><option>국어</option><option>수학</option><option>사회</option><option selected>과학</option><option>영어</option><option>통합</option><option>미술</option><option>음악</option><option>체육</option><option>실과</option><option>창체</option></select></label><label>주제<input id="btopic" value="생활 속 문제를 해결하는 발명 아이디어" required maxlength="300"></label><label>만들 결과물<select id="boutput"><option>40분 수업 지도안과 활동지</option><option>수준별 보충 학습지</option><option>과정중심 평가표</option><option>수업용 HTML 퀴즈 제작 지침</option><option>가정통신문 초안</option></select></label><label>대상·조건<textarea id="bcontext" rows="3" placeholder="예: 26명, 모둠 활동, 읽기 지원 필요 학생 포함. 개인정보는 입력하지 마세요."></textarea></label><label><span id="breference-label">성취기준·참고 자료 (선택)</span><textarea id="breference" rows="3" placeholder="교육과정 원문이나 수업 자료를 붙여 넣으세요. 없으면 비워 두세요."></textarea></label><button class="primary" type="submit">맞춤 프롬프트 만들기 ↗</button></form><div class="panel output"><span class="badge">선생님의 프롬프트</span><h3>복사해 AI 도구에 붙여 넣으세요.</h3><p class="muted">이 앱은 요청 문장을 구성합니다. 결과물 생성은 선택한 AI 서비스에서 진행해요.</p><textarea id="builderresult" rows="19" aria-label="생성된 프롬프트, 직접 편집 가능"></textarea><div class="button-row"><button class="primary" id="buildercopy">프롬프트 복사</button><button class="secondary" id="builderdownload">텍스트로 내려받기</button></div></div></div></section>
+
+<section id="toolsview" hidden><div class="section-heading"><div><div class="eyebrow">CHOOSE YOUR WORKFLOW</div><h2>도구별 핵심 기능 사용법</h2><p>목표 설정 → 지침·자료 제공 → 결과 수정 → 근거 확인의 순서로 사용하세요.</p></div></div><div class="toolgrid"><article class="panel"><div class="tool-icon terracotta">C</div><h3>Claude</h3><p>긴 문서와 활동지 초안을 정리하는 작업부터 시도해 보세요.</p><ul><li>관찰 메모 → 기록 문장</li><li>수업 설계 → 활동지 초안</li><li>학급 퀴즈 → 제작 지침</li></ul><a class="secondary" href="https://claude.ai/" target="_blank" rel="noopener noreferrer">Claude 열기 ↗</a></article><article class="panel"><div class="tool-icon green">G</div><h3>ChatGPT</h3><p>질문을 나누고 여러 형식의 수업 자료를 구상해 보세요.</p><ul><li>학생 질문 → 탐구 활동</li><li>표·수치 → 해석 확인</li><li>삽화·대화 → 수업 구상</li></ul><a class="secondary" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">ChatGPT 열기 ↗</a></article><article class="panel"><div class="tool-icon blue">✧</div><h3>Gemini</h3><p>학교에서 사용하는 구글 문서 업무와 연결할 방식을 살펴보세요.</p><ul><li>학년 협의 → 공동 문서 초안</li><li>설문 문항 → 표 구성</li><li>단원 내용 → 퀴즈 구상</li></ul><a class="secondary" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">Gemini 열기 ↗</a></article></div><div class="panel info-panel"><h3>반복 업무를 위한 지침 구성</h3><ol><li>역할과 대상: “초등 5학년 담임을 돕고, 학생에게는 짧고 쉬운 말로 답해 줘.”</li><li>과제와 형식: “가정통신문 초안과 보호자용 문자 요약을 작성해 줘.”</li><li>자료와 제한: “첨부한 학교 양식만 사용하고, 모르는 날짜는 [확인 필요]로 남겨 줘.”</li><li>수정과 검토: “빠진 조건과 근거 없는 내용을 찾아 수정해 줘.”</li></ol><p>프로젝트·맞춤 도우미·파일·Canvas 등 실제 제공 기능은 계정에서 확인하세요. 앱이 AI 서비스의 작업을 자동 실행하지는 않습니다.</p><button class="secondary" data-route="builder">내 지침을 프롬프트로 만들기 ↗</button></div><div class="panel info-panel"><h3>자료의 근거를 함께 읽고 싶다면</h3><p>NotebookLM에서 교사가 제공한 교육과정·공문·연수 자료를 바탕으로 질문을 구성하고, 응답에 표시된 근거를 원문과 대조하는 방식으로 활용할 수 있습니다. 개인정보가 있는 자료는 제외하세요.</p><a href="https://notebooklm.google.com/" target="_blank" rel="noopener noreferrer">NotebookLM 열기 ↗</a></div></section>
+
+<section id="checkview" hidden><div class="section-heading"><div><div class="eyebrow">A THOUGHTFUL FINISH</div><h2>교실에 가져가기 전, 한 번 더.</h2><p>확인 항목은 현재 브라우저에 저장됩니다.</p></div><button class="text-button" id="checkreset">다시 점검하기 ↺</button></div><div class="check-layout"><div class="panel" id="checklist"></div><div class="panel check-summary"><div id="checknumber">0/6</div><h3>선생님의 확인이<br>자료를 완성해요.</h3><p>활용 사례는 모두 교사용 예시입니다. 학생에게 AI 서비스를 직접 사용하게 하는 활동은 연령과 학교 계정 정책을 먼저 확인하세요.</p><button class="secondary" id="printcheck">확인표 인쇄하기</button></div></div></section>
+
+<footer><span>✳ 초등 AI 교무실</span><p>원본 「교사용 AI 활용 리포트」(표기: 오.승.열.제.작)의 구성 참고 · 초등 사례로 재작성<br>프롬프트와 예상 결과는 연습용 예시 · 저장한 사례와 설정은 이 브라우저에만 보관</p></footer></main></div>
+
+<dialog id="detail"><div class="dialog-top"><span id="detailmeta" class="eyebrow"></span><button id="close" class="icon-button" aria-label="닫기">×</button></div><h2 id="detailtitle"></h2><p id="detaildesc"></p><div class="detail-columns"><div><div class="small-label">01 · 이렇게 활용해요</div><ol id="detailsteps" class="steps"><li>학년과 학습 범위를 확인해요.</li><li>예시 자료를 우리 수업 내용으로 바꿔요.</li><li>프롬프트를 복사해 AI에 붙여 넣어요.</li><li>결과를 원문·관찰과 대조하고 수정해요.</li></ol><div class="small-label">02 · 결과의 모습 <span>(예시)</span></div><div class="result-example" id="dresult"></div><div class="detail-check"><b>선생님 확인</b><p id="dcheck"></p></div></div><div class="prompt-pane"><div class="prompt-header"><b>바로 쓰는 프롬프트</b><span>직접 편집할 수 있어요</span></div><label class="inline-grade">대상 학년<select id="detailgrade"><option>1학년</option><option>2학년</option><option>3학년</option><option>4학년</option><option selected>5학년</option><option>6학년</option></select></label><textarea id="prompt" rows="15" aria-label="사례 프롬프트 편집"></textarea><div class="button-row"><button id="copy" class="primary">프롬프트 복사</button><button id="save" class="secondary">☆ 저장하기</button></div><div class="ai-links"><span>복사한 뒤 도구에서 붙여 넣으세요</span><a href="https://claude.ai/" target="_blank" rel="noopener noreferrer">Claude ↗</a><a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">ChatGPT ↗</a><a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">Gemini ↗</a></div></div></div><div class="dialog-bottom"><button id="caseprint" class="text-button">이 사례 인쇄</button><button id="casedownload" class="text-button">프롬프트 내려받기 ↓</button></div></dialog><div id="toast" role="status" aria-live="polite"></div><script src="data.js"></script><script src="app.js"></script></body></html>
+
+style.css
+
+/* 전체 화면 공통: 읽기 쉬운 크기, 진한 본문, 분명한 조작 요소 */
+
+:root{font-size:18px;--bg:#f3f5f8;--white:#fff;--ink:#172a3b;--muted:#3d4f61;--line:#c5cfda;--control:#74879a;--green:#15573f;--green-light:#e9f2ec;--lime:#edf4c9;--peach:#f9eadd;--blue:#e8eef8;--purple:#eee9f6;--sidebar-width:18rem;--focus:#0759b0;color-scheme:light}
+
+:root[data-text-size="large"]{font-size:22px}
+
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:'Pretendard','Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:1rem;line-height:1.8;font-weight:500;word-break:keep-all;overflow-wrap:anywhere}button,input,select,textarea{font:inherit}button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}button,a{touch-action:manipulation}button{cursor:pointer}a{color:var(--green);text-decoration:underline;text-underline-offset:.2em}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--focus);outline-offset:3px}input,select,textarea{color:var(--ink);background:#fff;border:2px solid var(--control);border-radius:8px}input::placeholder,textarea::placeholder{color:#4b5e70;opacity:1}[hidden]{display:none!important}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.skip{position:fixed;left:1rem;top:-8rem;z-index:100;background:#fff;padding:.7rem 1rem;border:2px solid var(--green);border-radius:8px}.skip:focus{top:1rem}
+
+#sidebar{position:fixed;inset:0 auto 0 0;width:var(--sidebar-width);background:#fff;border-right:2px solid var(--line);padding:1.3rem 1rem;display:flex;flex-direction:column;z-index:30;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:auto;scrollbar-color:#667d70 #edf2ef}.brand{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink);font-size:1.2rem;font-weight:800;line-height:1.5}.logo{background:var(--green);color:#fff;width:2.6rem;height:2.8rem;border-radius:12px;display:grid;place-items:center;font-size:2.1rem;flex-shrink:0}.brand small{display:block;font-size:.9rem;letter-spacing:.03em;color:var(--muted);font-weight:600;margin-top:.25rem}.sidebar-filters{margin:1.5rem 0 1rem;padding-bottom:.8rem;border-bottom:2px solid var(--line)}.side-filter-row{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}.side-filter-row label{color:var(--ink);font-size:.95rem;font-weight:700}.side-filter-row select{display:block;width:100%;min-width:0;padding:.55rem .35rem;font-size:.95rem;margin-top:.3rem;min-height:2.8rem}.side-search-label{display:block;margin-top:.6rem}.side-search-label input{width:100%;font-size:.95rem;padding:.6rem .5rem;min-height:2.8rem}.sidebar-filters>.text-button{margin-top:.35rem;padding:.4rem 0}.side-label{font-size:.9rem;font-weight:700;color:var(--muted);margin:1rem .5rem}nav{display:grid;gap:.3rem}.nav{border:2px solid transparent;background:transparent;color:var(--ink);display:flex;align-items:center;text-align:left;width:100%;padding:.55rem .45rem;border-radius:8px;gap:.5rem;min-height:2.7rem;font-size:.95rem;line-height:1.6;font-weight:600}.nav span{flex:1;min-width:0}.nav b{font-size:.9rem;padding:0 .35rem;color:var(--ink);border-radius:5px;background:#e8edf2}.nav.active{background:var(--green-light);border-left-color:var(--green);color:var(--green);font-weight:800}.nav:hover{background:#f0f4f7}.nav-number{flex:none!important;min-width:1.4rem;color:#31543f;font-size:.9rem;font-weight:700}.case-nav-heading{display:flex;align-items:center;gap:.15rem}.case-nav-heading>.nav{flex:1;min-width:0}.case-nav-heading>.nav span{white-space:normal}.case-subnav-toggle{flex-shrink:0;width:2.5rem;height:2.7rem;border:2px solid #829b8b;border-radius:8px;background:var(--green-light);color:var(--green);font-size:1.3rem;display:grid;place-items:center}.case-subnav-toggle:hover{background:#dceadd}.case-subnav-toggle span{transition:transform .18s}.case-subnav-toggle.collapsed span{transform:rotate(-90deg)}.case-subnav{display:grid;gap:.15rem;margin:0 0 .6rem 1.5rem;padding:.2rem 0 .3rem .55rem;border-left:2px solid #8da494}.subnav-sort-label{color:var(--muted);font-size:.9rem;padding:.3rem .4rem;font-weight:600}.subnav-item{display:flex;align-items:center;gap:.45rem;width:100%;padding:.5rem .4rem;border:2px solid transparent;border-radius:7px;background:#fff;color:var(--ink);text-align:left;min-height:2.5rem;font-size:.95rem;font-weight:600}.subnav-item>span:nth-child(2){flex:1}.subnav-item small{font-size:.9rem;color:var(--muted);font-weight:700}.subnav-dot{width:5px;height:5px;border-radius:50%;background:#31543f;flex-shrink:0}.subnav-item.active{background:var(--green-light);border-left-color:var(--green);font-weight:800;color:var(--green)}.subnav-item:hover{background:#f0f4f1}.nav-divider{height:2px;background:var(--line);margin:.6rem .4rem}.sidebar-note{margin:1.5rem .3rem 0;padding-top:1rem;border-top:2px solid var(--line)}.sidebar-note span{font-size:1rem;font-weight:700;line-height:1.7}.sidebar-note p{color:var(--muted);font-size:.9rem}.side-bottom{margin-top:auto;padding:1.5rem .3rem .4rem;color:var(--muted);font-size:.9rem}.side-bottom span{font-size:.9rem}
+
+.shell{margin-left:var(--sidebar-width);min-width:0}header{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:4.5rem;padding:.7rem 2rem;background:#fff;border-bottom:2px solid var(--line);color:var(--muted);font-size:.9rem;flex-wrap:wrap}#menu{display:none;color:var(--green);background:#fff;border:2px solid var(--control);border-radius:8px;padding:.3rem .7rem;min-width:44px;min-height:44px;font-size:1.3rem}.header-right{font-size:.9rem;font-weight:600}.header-right i{display:inline-block;width:8px;height:8px;background:var(--green);border-radius:50%;margin-right:.4rem}.readability-controls{display:flex;align-items:center;gap:.35rem;margin-left:auto;font-size:.9rem;white-space:nowrap}.readability-controls>span{color:var(--ink);font-weight:700;margin-right:.2rem}.size-button{border:2px solid #73899a;background:#fff;color:var(--ink);padding:.3rem .6rem;border-radius:7px;min-height:44px;font-size:.9rem;font-weight:700}.size-button[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:#fff}.size-button:hover{box-shadow:0 0 0 2px #dce7df}main{max-width:1500px;margin:0 auto;padding:1.8rem 2rem 0;min-width:0}section{min-width:0}h1,h2,h3,h4{color:var(--ink);font-weight:800;line-height:1.55;letter-spacing:-.015em}h1{font-size:2.2rem;margin:.7rem 0}h2{font-size:1.8rem;margin:.3rem 0 0}h3{font-size:1.25rem;margin:.8rem 0}.eyebrow{font-size:.9rem;letter-spacing:.05em;color:var(--green);font-weight:800}.section-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;margin:.4rem 0 1.4rem;flex-wrap:wrap}.section-heading p{font-size:1rem;color:var(--muted);margin:.6rem 0 0}.primary,.secondary{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.6rem 1rem;border-radius:8px;min-height:2.8rem;font-size:1rem;font-weight:700;text-decoration:none;white-space:normal;text-align:center}.primary{background:var(--green);color:#fff;border:2px solid var(--green)}.primary:hover{background:#0d402d;border-color:#0d402d}.secondary{background:#fff;border:2px solid #6f887d;color:var(--green)}.secondary:hover{background:#edf3ee}.text-button{border:0;background:none;padding:.45rem .25rem;color:#254839;text-decoration:underline;text-underline-offset:.2em;min-height:44px;font-size:.95rem;font-weight:600;white-space:normal}.text-button:hover{color:#102e20;background:#edf3ee;border-radius:5px}.button-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}.button-row a:not(.secondary){font-size:.95rem}.muted{font-size:1rem;color:var(--muted)}.badge{display:inline-block;background:#e8f1e9;color:var(--green);padding:.25rem .6rem;border-radius:5px;font-size:.9rem;font-weight:800}
+
+.hero{background:#eaf2e8;border:2px solid #b9cbb7;border-radius:16px;padding:2rem;display:flex;align-items:center;gap:1rem;min-height:20rem;position:relative;overflow:hidden}.hero-copy{position:relative;z-index:1;flex:1}.hero h1{font-size:2.2rem}.hero p{font-size:1rem;color:#2f4938;margin:0 0 1.4rem}.hero-art{width:260px;height:270px;position:relative;flex-shrink:0}.art-note{position:absolute;top:20px;left:55px;transform:rotate(-6deg);background:#fffdf3;border:1px solid #b4baa5;border-radius:5px;width:180px;height:225px;padding:20px;box-shadow:7px 8px 0 #b2c6a9;color:var(--ink)}.art-note span{font-size:16px;color:#3b4a36}.art-note b{font-size:24px;line-height:1.5;display:block;margin-top:10px}.art-note em{font-style:normal;box-shadow:inset 0 -8px var(--lime)}.note-line{height:3px;background:#a3ae91;margin-top:16px}.note-line.short{width:65%;margin-top:8px}.art-star{position:absolute;right:0;top:0;font-size:70px;line-height:1;color:#a0571f}.art-pencil{position:absolute;bottom:0;right:0;font-size:80px;color:var(--green);transform:rotate(-15deg)}.art-tag{position:absolute;left:-10px;bottom:15px;background:var(--green);border-radius:6px;padding:9px 12px;color:#fff;transform:rotate(4deg);font-size:16px}.art-small{position:absolute;left:-5px;top:10px;font:italic 30px Georgia;color:var(--green);transform:rotate(-10deg)}.art-small span{display:block;font:16px sans-serif}.orbit{position:absolute;left:5px;top:0;border:1px solid #a8b99d;border-radius:50%;width:260px;height:260px}.o2{transform:scale(.85)}.stats{display:flex;align-items:start;gap:2rem;padding:1.4rem .4rem;margin-bottom:1.5rem;border-bottom:2px solid var(--line);flex-wrap:wrap}.stats>div{display:flex;flex-direction:column}.stats b{font-size:1.8rem;color:var(--ink);line-height:1.4}.stats b span{font-size:.9rem;font-weight:600;color:var(--muted);margin-left:.3rem}.stats b .case-total-number{font-size:1.8rem;font-weight:800;color:var(--ink);margin:0}.stats>div>span{font-size:.9rem;color:var(--muted)}.stats p{margin:.2rem 0 0 auto;font-size:.95rem;color:var(--muted);padding-left:1rem;border-left:2px solid var(--line)}.stats strong{color:var(--ink);font-weight:700}.home-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.home-links>button{text-align:left;border:2px solid var(--line);border-radius:12px;background:#fff;padding:1.3rem;color:var(--ink)}.home-links>button:hover{border-color:var(--green)}.home-links small{display:block;font-size:.9rem;color:var(--green);font-weight:800;letter-spacing:.03em}.home-links b{display:block;font-size:1.25rem;margin:.5rem 0}.home-links span{font-size:1rem;color:var(--muted)}
+
+.filters{display:flex;gap:.65rem;flex-wrap:wrap}.filters input,.filters select{min-height:2.9rem;font-size:1rem}.filters select{padding:.55rem .7rem;min-width:8rem}.filters>label:not(.search){flex:1}.search{flex:3;position:relative;min-width:14rem}.search input{width:100%;padding:.55rem .8rem .55rem 2.4rem}.search>span{position:absolute;left:.7rem;top:.2rem;font-size:1.6rem;color:#405c69}.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0 1.4rem}.chip{border:2px solid #8c9fad;background:#fff;color:var(--ink);border-radius:24px;padding:.4rem .8rem;font-size:.95rem;font-weight:650;min-height:2.6rem}.chip.active{background:var(--green);color:#fff;border-color:var(--green);font-weight:800}.chip:hover{box-shadow:0 0 0 2px #dce8df}.results-row{display:flex;justify-content:space-between;gap:.6rem;flex-wrap:wrap;margin:0 0 1rem;font-size:.95rem;color:var(--muted)}.results-row #resultcount{color:var(--ink);font-weight:700}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.card{display:flex;flex-direction:column;min-width:0;background:#fff;border:2px solid var(--line);border-radius:12px;overflow:hidden;transition:border-color .15s,box-shadow .15s}.card:hover{border-color:#4c7962;box-shadow:0 4px 16px #183d2920}.card-top{padding:1rem 1rem 0;display:flex;align-items:center;gap:.6rem}.case-icon{display:grid;place-items:center;width:2.5rem;height:2.5rem;border-radius:9px;color:var(--green);background:#e8f1e4;font-size:1.5rem;flex-shrink:0}.cat-label{color:var(--muted);font-size:.9rem;font-weight:700}.star{margin-left:auto;border:2px solid transparent;border-radius:7px;width:2.6rem;height:2.6rem;background:#fff;color:#45596c;font-size:1.6rem;flex-shrink:0}.star:hover{border-color:#8ca091}.star.saved{color:#774c00;background:#fff2c9}.card-content{display:block;width:100%;flex:1;padding:1rem;border:0;background:#fff;color:var(--ink);text-align:left}.card h3{font-size:1.25rem;line-height:1.65;margin:0 0 .65rem;font-weight:800}.card p{font-size:1rem;color:var(--muted);line-height:1.85;margin:0}.tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:1rem}.tags span{font-size:.9rem;color:#2f4556;background:#eaf0f4;border:1px solid #c0cdd7;border-radius:5px;padding:.15rem .45rem;line-height:1.7;white-space:normal;font-weight:650}.card-bottom{display:flex;justify-content:space-between;gap:.4rem;flex-wrap:wrap;padding:.6rem 1rem;border-top:1px solid var(--line);font-size:.9rem;color:var(--green);font-weight:700;pointer-events:none}.card-bottom span:first-child{color:var(--muted);font-size:.9rem}.empty{text-align:center;padding:2.5rem 1rem;border:2px dashed #758e7c;border-radius:12px;background:#fff}.empty p{color:var(--muted)}.empty .button-row{justify-content:center}.selection-bar{padding:.85rem 1rem;border:2px solid #a8c0ae;border-radius:10px;background:var(--green-light);color:#203f2d;font-size:1rem;font-weight:700;line-height:1.9;margin-bottom:1rem;white-space:pre-wrap}.matching-rule{font-size:1rem;color:#284b35;margin:0 0 .75rem;line-height:1.9}.filter-clear-row{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;padding-bottom:.6rem;border-bottom:2px solid var(--line);margin-bottom:1.4rem;color:var(--muted);font-size:.95rem}.filter-clear-row button{font-size:.95rem}.custom-intro p{font-size:1rem;color:var(--muted)}.custom-intro .chips{margin-bottom:0}.custom-group{margin-bottom:2rem}.custom-group>h3{font-size:1.35rem;padding-bottom:.6rem;border-bottom:2px solid var(--line)}.custom-group>h3 span{font-size:.95rem;color:var(--muted);margin-left:.5rem;font-weight:600}
+
+.group-toolbar{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 0;border-top:2px solid var(--line);flex-wrap:wrap}.group-toolbar label{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;font-size:1rem;font-weight:700;color:var(--ink)}.group-toolbar select{padding:.5rem .7rem;min-height:2.7rem;font-size:1rem}.group-toolbar>span{font-size:.95rem;color:var(--muted)}.group-list{display:grid;gap:.9rem}.case-group{background:#fff;border:2px solid var(--line);border-radius:12px;overflow:hidden;scroll-margin-top:1rem}.case-group>summary{display:flex;align-items:center;gap:.9rem;padding:1.1rem;cursor:pointer;list-style:none}.case-group>summary::-webkit-details-marker{display:none}.case-group>summary::marker{content:''}.case-group>summary:hover{background:#f1f6f0}.group-icon{display:grid;place-items:center;flex-shrink:0;width:2.8rem;height:2.8rem;border-radius:10px;font-size:1.6rem;color:var(--green)}.group-heading{flex:1;min-width:0}.group-heading strong{display:block;font-size:1.25rem;color:var(--ink);font-weight:800}.group-heading small{display:block;font-size:.95rem;color:var(--muted);margin-top:.35rem;line-height:1.8}.group-count{font-size:.95rem;color:var(--green);background:#eaf1e7;border:1px solid #a9bdab;border-radius:18px;padding:.2rem .6rem;font-weight:700;flex-shrink:0}.group-arrow{font-size:1.5rem;color:var(--green);transition:transform .15s;flex-shrink:0}.case-group[open]>summary{background:#f0f5ed;border-bottom:2px solid var(--line)}.case-group[open]>summary .group-arrow{transform:rotate(180deg)}.group-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;padding:1rem;background:#f2f5ef}
+
+.panel{padding:1.5rem;background:#fff;border:2px solid var(--line);border-radius:12px;min-width:0}.builder-layout{display:grid;grid-template-columns:1fr 1.05fr;gap:1.2rem}.panel label{display:block;font-size:1rem;font-weight:700;margin-bottom:1rem}.panel input,.panel select,.panel textarea{width:100%;display:block;padding:.6rem .7rem;margin-top:.4rem;border-radius:7px;font-size:1rem;min-height:2.8rem}.panel textarea{resize:vertical;line-height:1.9;font-weight:500}.output textarea{background:#fff;min-height:24rem}.output h3{margin-bottom:.6rem}.toolgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.toolgrid p,.toolgrid li,.info-panel p{font-size:1rem;color:var(--muted)}.toolgrid ul{padding-left:1.3rem;line-height:1.9}.tool-icon{display:grid;place-items:center;width:2.8rem;height:2.8rem;border-radius:10px;font-size:1.5rem;font-family:Georgia;font-weight:800}.terracotta{color:#773b20;background:#f8e9dc}.green{color:var(--green);background:#e6f0e4}.blue{color:#204c8d;background:#e7edf7}.info-panel{margin-top:1.3rem}.info-panel h3{margin-top:0}.callout{padding:1.2rem 1.4rem;background:#eaf2e7;border-left:5px solid var(--green);border-radius:0 10px 10px 0;margin-bottom:1.4rem;color:#203b2c}.callout p{font-size:1rem;color:#314b39;margin-bottom:0}.table-wrap{width:100%;max-width:100%;overflow-x:auto;border:2px solid var(--line);border-radius:10px;background:#fff;margin-bottom:1.4rem;scrollbar-color:#667b8f #edf2f6}.comparison{width:100%;border-collapse:collapse;font-size:1rem;min-width:45rem}.comparison caption{text-align:left;padding:1rem;font-size:1rem;font-weight:700;background:#edf3e9;color:var(--ink)}.comparison th,.comparison td{padding:1rem .85rem;border-bottom:1px solid #aebecb;border-right:1px solid #c5cfda;text-align:left;vertical-align:top;line-height:1.9}.comparison thead th{color:#fff;background:#194d38;font-weight:800}.comparison tbody th{background:#edf3e9;color:var(--ink);min-width:8rem;font-weight:700}.comparison td{min-width:8rem;color:var(--ink)}.comparison small{font-size:.9rem;color:var(--muted)}.source-panel a{display:inline-block;font-size:1rem;margin:.4rem 1rem .4rem 0}.source-panel h3{margin-top:0}.fit-legend{display:flex;gap:1rem;flex-wrap:wrap;font-size:1rem;color:var(--muted);margin-bottom:1.2rem}.fit-legend b{display:inline-grid;place-items:center;min-width:1.8rem;min-height:1.8rem;padding:0 .3rem;margin-right:.4rem;border-radius:5px;background:#e7f0e4;color:var(--green)}.fit-cell{text-align:center!important;vertical-align:middle!important;min-width:5rem!important}.fit-badge{display:inline-grid;place-items:center;width:2rem;height:2rem;border-radius:6px;font-weight:800}.fit-A{color:#fff;background:var(--green)}.fit-B{color:#28452c;background:#e5eedc}.fit-C{color:#704013;background:#fff0df}.recommend-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.recommend-grid p{font-size:1rem;color:var(--muted)}.roadmap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.roadmap>div{background:#edf3e9;padding:1rem;border:1px solid #bbcbbb;border-radius:9px}.roadmap b{font-size:1rem;color:var(--green)}.roadmap p{font-size:1rem;color:var(--muted)}.check-layout{display:grid;grid-template-columns:1.4fr 1fr;gap:1.2rem}.check-item{display:flex!important;align-items:flex-start;gap:.8rem;padding:1rem 0;border-bottom:1px solid var(--line);margin:0!important}.check-item:last-child{border:0}.check-item input{width:1.4rem!important;height:1.4rem;accent-color:var(--green);min-height:0!important;margin-top:.3rem!important;flex-shrink:0}.check-item b{font-size:1.1rem;font-weight:800}.check-item small{display:block;font-size:1rem;color:var(--muted);font-weight:500;margin-top:.45rem}.check-summary{background:#eaf2e7;align-self:start}.check-summary p{font-size:1rem;color:var(--muted)}#checknumber{color:var(--green);font-size:2.7rem;font-weight:800;line-height:1.4}.check-summary h3{font-size:1.5rem}footer{display:flex;align-items:flex-start;gap:1rem;flex-wrap:wrap;padding:2rem 0 1.5rem;margin-top:2rem;border-top:2px solid var(--line);color:var(--muted);font-size:.9rem;line-height:1.9}footer>span{color:var(--green);font-size:1rem;font-weight:800}footer p{margin:0}
+
+dialog{border:2px solid #72907d;border-radius:14px;padding:1.5rem;width:min(1200px,94vw);max-height:92vh;color:var(--ink);background:#fff;box-shadow:0 15px 60px #15362640;font-size:1rem}dialog::backdrop{background:#172b3699}.dialog-top{display:flex;align-items:center;justify-content:space-between;gap:.75rem}.dialog-top .eyebrow{font-size:.95rem}.icon-button{border:2px solid #7d9484;background:#edf3ee;color:var(--ink);width:2.7rem;height:2.7rem;border-radius:50%;font-size:1.8rem;line-height:1;flex-shrink:0}dialog h2{font-size:1.7rem;margin:.7rem 0}dialog>p{font-size:1rem;color:var(--muted);margin-bottom:1.4rem}.detail-columns{display:grid;grid-template-columns:.85fr 1.15fr;gap:1.5rem}.small-label{color:var(--green);font-size:1rem;font-weight:800;margin:.4rem 0 .8rem}.small-label span{color:var(--muted);font-weight:600}.steps{font-size:1rem;color:var(--ink);padding-left:1.5rem;line-height:2;margin:0 0 1.5rem}.steps li+li{margin-top:.45rem}.result-example{padding:1rem;background:#edf4e8;color:#263f2c;border:1px solid #afc4aa;border-radius:9px;font-size:1rem;line-height:1.95}.detail-check{border-left:4px solid #9b622c;padding-left:1rem;margin-top:1.4rem;color:var(--muted);font-size:1rem;line-height:1.9}.detail-check b{color:#734315}.detail-check p{margin:.5rem 0}.prompt-pane{padding:1rem;border:2px solid #bdcbbf;border-radius:10px;background:#f4f7f2;min-width:0}.prompt-header{display:flex;justify-content:space-between;gap:.6rem;flex-wrap:wrap;font-size:1rem}.prompt-header span{font-size:.9rem;color:var(--muted)}.inline-grade{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-top:.8rem;font-size:1rem;color:var(--ink)}.inline-grade select{padding:.4rem .6rem;font-size:1rem;min-height:2.6rem}#prompt{width:100%;padding:1rem;margin-top:.8rem;background:#fff;color:var(--ink);border:2px solid #718b7a;border-radius:8px;font-size:1rem;font-weight:500;line-height:1.95;resize:vertical;min-height:25rem}.ai-links{display:flex;flex-wrap:wrap;gap:.5rem 1rem;font-size:1rem;margin-top:1rem}.ai-links>span{width:100%;color:var(--muted);font-size:.95rem}.ai-links a{padding:.3rem 0;min-height:44px;font-weight:700}.dialog-bottom{display:flex;justify-content:space-between;gap:.8rem;flex-wrap:wrap;border-top:2px solid var(--line);margin-top:1rem;padding-top:.6rem}#toast{position:fixed;left:50%;bottom:1.5rem;transform:translateX(-50%);z-index:100;background:#153c2a;color:#fff;border:2px solid #fff;border-radius:10px;padding:.8rem 1.3rem;font-size:1rem;font-weight:650;display:none;max-width:calc(100% - 2rem);box-shadow:0 5px 25px #172b3640;text-align:center}#toast.show{display:block}
+
+@media(min-width:1800px){.grid,.group-cards,.toolgrid,.home-links{grid-template-columns:repeat(3,minmax(0,1fr))}.roadmap{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+@media(max-width:1400px){main{padding:1.4rem 1.5rem 0}header{padding:.7rem 1.5rem}.header-right{display:none}.hero-art{display:none}.hero{min-height:0}.stats{gap:1.4rem}.builder-layout,.check-layout{grid-template-columns:1fr}.detail-columns{grid-template-columns:1fr}.steps{margin-bottom:1rem}.output textarea{min-height:18rem}.home-links{grid-template-columns:1fr}}
+
+@media(max-width:1100px){#sidebar{width:min(22rem,92vw);transform:translateX(-100%);box-shadow:8px 0 35px #18372a30;transition:transform .18s}body.menu-open #sidebar{transform:translateX(0)}.shell{margin-left:0}#menu{display:inline-grid;place-items:center}header{justify-content:flex-start}.readability-controls{margin-left:auto}.grid,.group-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.toolgrid,.recommend-grid{grid-template-columns:1fr}}
+
+@media(max-width:700px){header{padding:.6rem .8rem;gap:.5rem}#breadcrumb{font-size:.9rem;flex:1}main{padding:1.1rem .8rem 0}.readability-controls{flex-basis:100%;justify-content:flex-end}.hero{padding:1.3rem}.hero h1{font-size:1.9rem}h2{font-size:1.55rem}.stats{padding:1rem 0;gap:1rem}.stats p{display:none}.stats b,.stats b .case-total-number{font-size:1.6rem}.section-heading{align-items:start}.grid,.group-cards,.toolgrid,.recommend-grid,.roadmap{grid-template-columns:1fr}.panel{padding:1.1rem}.filters>label{flex-basis:100%!important}.search{min-width:0}.filters select{width:100%}.group-toolbar{align-items:start}.case-group>summary{flex-wrap:wrap;gap:.6rem;padding:.85rem}.group-icon{width:2.3rem;height:2.3rem}.group-heading{min-width:7rem}.group-heading strong{font-size:1.2rem}.group-count{margin-left:2.9rem}.group-arrow{margin-left:auto}.group-cards{padding:.7rem}.filter-clear-row{gap:.6rem}dialog{padding:1rem;width:96vw;max-height:94vh}.dialog-top{align-items:flex-start}dialog h2{font-size:1.5rem}.prompt-pane{padding:.8rem}.detail-columns{gap:1rem}.prompt-header{flex-direction:column}.button-row>*{flex:1 1 auto}.callout{padding:1rem}.comparison{min-width:42rem}.comparison th,.comparison td{padding:.8rem}.comparison caption{font-size:1rem}.side-filter-row{grid-template-columns:1fr}.side-filter-row select{padding:.6rem}.brand{font-size:1.15rem}}
+
+@media(max-width:390px){.readability-controls{gap:.25rem}.size-button{padding:.3rem .5rem}.group-heading{min-width:6rem}.group-count{margin-left:0}.primary,.secondary{padding:.6rem .7rem}.filter-clear-row{gap:.4rem}.logo{width:2.3rem}.brand{gap:.45rem}}
+
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+
+@media(forced-colors:active){.primary,.secondary,.nav,.chip,.card,.case-group,.size-button{border:2px solid ButtonText}.nav.active,.subnav-item.active{outline:2px solid Highlight}.fit-badge{border:2px solid CanvasText}}
+
+@media print{:root,:root[data-text-size="large"]{font-size:12pt}body{background:#fff;color:#000}#sidebar,header,.hero,.stats,footer,#toast,.filters,.chips,.results-row,.text-button,.button-row,.ai-links,.icon-button,.group-toolbar,.home-links,.filter-clear-row{display:none!important}.shell{margin:0}main{padding:0;max-width:none}dialog[open]{position:static;display:block;border:0;box-shadow:none;width:100%;max-height:none;padding:0;overflow:visible}body:has(dialog[open]) .shell{display:none}dialog::backdrop{display:none}.detail-columns,.grid,.group-cards,.check-layout{display:block}.card,.panel{break-inside:avoid;margin-bottom:1rem}.star,.card-bottom,.check-summary,.inline-grade{display:none}.prompt-pane{margin-top:1rem}#prompt{min-height:0;border:0;overflow:visible}.print-prompt{white-space:pre-wrap;line-height:1.8;font-size:1rem}.table-wrap{overflow:visible;border:1px solid #000}.comparison{min-width:0;font-size:.9rem}.comparison td,.comparison th{min-width:0;padding:.4rem}.comparison thead th{background:#fff;color:#000}.group-count{color:#000}.case-group>summary{break-after:avoid}}
+
+/* 읽기 설정과 닫기는 긴 화면에서도 쉽게 찾는다. */
+
+@media screen{header{position:sticky;top:0;z-index:20}.shell main,.shell main>section,.case-group{scroll-margin-top:6rem}.dialog-top{position:sticky;top:0;background:#fff;z-index:3;padding-bottom:.55rem}.table-hint{font-size:1rem;color:var(--muted);margin:0 0 .6rem}.table-wrap:focus-visible{outline:3px solid var(--focus);outline-offset:3px}}
+
+@media screen and (max-width:700px){.shell main,.shell main>section,.case-group{scroll-margin-top:9rem}}
+
+@media print{.table-hint{display:none}}
+
+@media screen and (max-width:1100px){#sidebar{visibility:hidden}body.menu-open #sidebar{visibility:visible}}
+
+data.js
+
+const cases = [
+
+['단원 수업을 한 세트로','수업·평가','통합','전체','수업 흐름과 학습지, 형성평가를 연결해 준비해요.','우리 주변의 생활 속 문제 해결','40분씩 3차시 수업을 도입 5분–탐구 25분–나눔 10분으로 구성해 줘. 차시별 학생 질문·교사 지원·준비물을 표로 쓰고, 2차시 활동지와 형성평가 5문항 및 정답을 만들어 줘.','관찰 → 문제 찾기 → 해결 방법 제안 → 돌아보기','성취기준은 교사가 교육과정 원문을 제공한 경우에만 연결해요.'],
+
+['흥미를 발견하는 활동 퀴즈','진로·창체','창체','전체','진로를 결정하기보다 다양한 활동에 관심을 가져요.','그리기·만들기·탐구하기·친구 돕기','생활 속 선택 상황 8개로 구성한 HTML 활동 퀴즈를 만들어 줘. 이름 입력 없이 시작하고 한 화면에 한 문항, 큰 버튼, 진행 표시, 다시 하기 기능을 넣어 줘. 결과에는 좋아하는 활동 2개와 다음에 시도할 활동 3개를 제안해 줘. 직업 적합성 점수나 진단 결과를 제시하지 마.','“만드는 활동을 골랐네요. 종이 다리 만들기도 해 볼까요?”','흥미는 달라질 수 있어요. 결과로 학생의 진로를 단정하지 않아요.'],
+
+['과정이 보이는 평가 기준','수업·평가','국어','3~4·5~6','점수보다 학생의 사고와 다음 배움을 살펴봐요.','우리 반 독서 시간을 늘리자는 제안 글','주장·근거·독자 고려의 3개 기준으로 3단계 평가표를 만들어 줘. 학생에게 보여 줄 쉬운 표현도 붙여 줘. 아래 가상 답안에서 관찰 가능한 근거만 찾고 피드백을 써 줘. 답안: “책 읽을 시간을 늘리면 좋겠습니다. 읽다 멈추면 내용이 궁금하기 때문입니다.” 점수를 확정하지 말고 교사 확인 질문을 적어 줘.','잘한 점: 제안이 분명함 / 다음 단계: 친구들이 공감할 사례 더하기','평가 기준과 최종 판단은 교사가 확인해요.'],
+
+['수업 도입 그림 만들기','수업·평가','통합','전체','설명보다 먼저 생각을 열어 주는 그림을 준비해요.','비 오는 날 우산을 함께 쓰는 어린이','초등학생이 상황을 관찰하고 질문할 수 있는 수업용 그림을 위한 이미지 프롬프트를 작성해 줘. 서로 다른 행동을 하는 어린이 3명, 단순한 배경, 큰 대상, 따뜻한 색으로 구성해 줘. 그림 속 글자는 넣지 말고 관찰 질문 3개를 별도로 제안해 줘.','“우산 밖의 친구는 어떤 마음일까요?”','실제 학생 얼굴을 넣지 않고, 이미지의 이용 조건을 확인해요.'],
+
+['수준별 수학 보충 학습지','기초학력','수학','3~4·5~6','같은 목표를 다른 도움으로 접근해요.','분모가 같은 분수의 덧셈','그림으로 이해하는 기초 3문항, 식으로 푸는 기본 3문항, 생활에 적용하는 도전 2문항을 만들어 줘. 각 문항에 정답과 풀이, 흔한 오개념을 적어 줘. 기초에는 분수 띠 그리기 안내를 넣고 모든 계산을 검산해 줘.','1/5 + 2/5 = 3/5 · 분모를 더하지 않는 까닭 설명하기','선택한 학년이 배우는 범위인지 확인하고 수와 개념을 조정해요.'],
+
+['짧고 즐거운 영어 대화','수업·평가','영어','3~4·5~6','교사 시범과 짝 활동으로 말할 기회를 늘려요.','좋아하는 음식 묻고 답하기','교사가 진행하는 초등 영어 역할놀이 대본을 만들어 줘. 핵심 표현은 “Do you like apples?”와 “Yes, I do. / No, I don’t.”야. 한 번에 한 질문, 짧은 문장, 그림 카드 제안, 교사 시범 1회와 짝 대화 3회로 구성해 줘. 말하기가 어려운 학생에게 가리키기와 선택 답변을 허용해 줘.','A: Do you like apples? B: Yes, I do.','학생 개인 계정 접속 없이 교사가 화면과 음성을 운영해요.'],
+
+['생활 문제 토의 수업','수업·평가','국어','3~4·5~6','친구의 생각을 듣고 이유를 붙여 말해요.','우리 반에서 쉬는 시간 놀이 공간을 나누는 방법','40분 토의 수업을 설계해 줘. 상황 카드 4개, 다른 입장 3가지, 이유 말하기 문장 틀, 사회자·기록자·발표자·시간지킴이 역할 카드를 만들어 줘. 다수결 전에 모두의 의견을 듣는 절차와 성찰 질문을 포함해 줘.','“나는 …라고 생각해. 왜냐하면 …이기 때문이야.”','정답을 미리 제시하지 않고 학생이 대안을 만들게 해요.'],
+
+['교과학습발달상황 문장 다듬기','기록·상담','통합','전체','수업 관찰에서 확인한 배움만 기록해요.','가상 관찰: 분수 띠를 비교하고 2/4와 1/2의 크기가 같음을 설명함','제공한 가상 관찰만 바탕으로 교과학습발달상황 초안 2개를 각각 2문장 이내로 써 줘. 관찰 근거와 연결해 제시하고, 없는 능력·활동·성취수준을 추가하지 마. 부족한 정보는 [관찰 추가 필요]로 표시해 줘.','분수 띠를 비교하여 크기가 같은 분수를 찾고 그 까닭을 설명함.','실제 기록은 해당 학년도 기재요령과 교사 관찰을 확인해요.'],
+
+['체험학습 장소 비교','진로·창체','창체','전체','이동·학습 목표·우천 대안을 비교해 체험을 준비해요.','가상 후보 A: 과학관, 이동 30분, 실내 / B: 생태공원, 이동 50분, 야외','가상 후보를 이동 시간·학습 목표·안전·접근성·우천 대안·비용 정보 유무로 비교해 줘. 알려지지 않은 가격과 운영 시간은 만들지 말고 [확인 필요]로 써 줘. 현장 확인 질문 5개도 제안해 줘.','과학관: 우천 시 활동 가능 / 생태공원: 날씨 대안 확인 필요','실제 운영·예약·안전 정보는 최신 공식 자료와 대조해요.'],
+
+['학생 강점 발견 상담','기록·상담','창체','전체','아이의 강점을 다음 활동과 연결해요.','가상 관찰: 만들기 시간에 재료를 나누고 조립이 어려운 친구를 도움','관찰 사실 / 학생에게 물어볼 질문 / 다음에 시도할 활동으로 상담 메모를 구성해 줘. 강점을 성격이나 지능으로 단정하지 마. 학생의 생각을 먼저 듣는 열린 질문 4개를 만들어 줘.','“친구를 도울 때 어떤 점이 즐거웠니?”','학생 식별정보와 가정의 민감한 사정을 입력하지 않아요.'],
+
+['발표 연습 질문 카드','진로·창체','국어','전체','면접 대신 자신의 경험을 또박또박 나눠요.','내가 만든 종이 다리 소개하기','1분 발표 문장 틀과 친구의 질문 카드 6개를 만들어 줘. 시작–만든 방법–어려웠던 점–다시 해 볼 점을 포함해 줘. 읽기 어려운 학생에게 그림을 짚으며 말하는 방법을 제안해 줘.','“가장 튼튼하게 만들려고 바꾼 부분은 어디인가요?”','발표의 유창함만으로 배움을 판단하지 않아요.'],
+
+['우리 동네 탐구 소식','진로·창체','사회','3~4·5~6','동네 자료에서 질문과 탐구 과제를 찾아요.','가상 안내: 도서관에서 어린이 책 교환 행사를 엶','이 안내만 활용해 어린이용 소식 5문장, 사실 확인 질문 3개, 교실에서 이어 갈 탐구 활동 1개를 만들어 줘. 날짜·기관명·연락처를 지어내지 마. 사실과 제안을 구분해 줘.','사실: 책 교환 행사를 엶 / 탐구: 물건을 나누면 어떤 점이 좋을까?','새로운 소식처럼 꾸미지 말고 실제 제공 자료의 날짜를 표시해요.'],
+
+['관심에서 출발하는 독서 활동','진로·창체','국어','전체','책의 양보다 질문과 경험을 연결해요.','곤충과 만들기를 좋아하는 학급','관심 주제로 3주 독서·탐구 활동을 구성해 줘. 실제 도서명을 모르면 만들지 말고 책 선정 기준을 제안해 줘. 매주 읽기 전 질문, 읽는 중 기록, 읽은 뒤 만들기·말하기 활동을 넣어 줘.','관찰하기 → 궁금한 점 찾기 → 설명 카드 만들기','학생의 읽기 수준과 다양한 관심을 반영해요.'],
+
+['학부모 교육과정 안내회','학급·행정','창체','전체','학급의 배움과 소통 방법을 명확히 알려요.','놀이와 탐구 중심 수업, 과정 관찰, 정해진 소통 시간','학부모 안내회 8장 슬라이드 개요를 만들어 줘. 학급의 방향·하루 생활·수업·평가·준비물·소통 방법·질문 순서로 구성하고, 각 장에 제목·핵심 문장 3개·시각 요소를 써 줘. 정해지지 않은 일정은 [학교 확인]으로 표시해 줘.','“결과와 함께 도전하고 수정한 과정도 살펴봅니다.”','학교 확정 사항과 담임의 제안을 구분해요.'],
+
+['가정통신문 초안','학급·행정','창체','전체','학부모가 해야 할 일을 쉽게 찾도록 써요.','가상 행사: 교내 생태 관찰, 다음 주 수요일 2~3교시, 운동화·물 준비','제공한 행사 정보로 안내문을 써 줘. 목적, 일정, 장소, 준비물, 보호자 확인 사항을 구분하고 문자용 4줄 요약도 만들어 줘. 정확한 날짜나 문의처가 없으면 [확인 필요]로 표시해 줘.','준비물: 운동화, 개인 물 / 활동 장소: [확인 필요]','가상 예시를 실제 공지로 보내기 전에 날짜와 장소를 확인해요.'],
+
+['학급 설문 읽기','학급·행정','수학','전체','숫자에서 학생의 요구와 다음 행동을 찾아요.','가상 응답: 독서 8명, 운동 10명, 만들기 6명, 총 24명','합계와 각 선택 비율을 계산하고 막대그래프에 넣을 표를 만들어 줘. 해석 2개와 학급 활동 제안 2개를 써 줘. 응답하지 않은 학생이나 원인을 추측하지 마.','운동 10명(약 41.7%) · 활동 선택 기회를 다양하게 제공하기','개인별 평가 자료가 아닌 집계 자료로 연습해요.'],
+
+['공동 문서 협의 초안','학급·행정','창체','전체','함께 편집하기 좋은 표와 의견 틀을 준비해요.','학년 공동 생태 프로젝트를 준비하는 협의','공동 문서에 붙여 넣을 협의 양식을 만들어 줘. 목표·차시별 활동·준비물·담당·의견·확정 여부 열을 포함해 줘. 문서 첫머리에 수정 이력과 협의 규칙 3개를 적어 줘.','제안과 확정을 구분하고 의견마다 근거 적기','앱에서 문서가 자동 생성되는 기능은 아니며 결과를 옮겨 사용해요.'],
+
+['공문에서 할 일 찾기','학급·행정','창체','전체','제출 기한과 담당 업무를 빠짐없이 정리해요.','가상 공문: 11월 6일까지 학년별 독서 활동 계획을 내부 제출. 양식은 붙임1 사용','내용을 요약하고 할 일·담당·기한·근거 문장 표를 만들어 줘. 담당이 없으면 [담당 확인], 첨부를 못 읽으면 [붙임 확인]으로 표시해 줘. 제출처와 절차를 추측하지 마.','독서 활동 계획 작성 / 담당 확인 / 11월 6일 / 붙임1 확인','원문과 붙임을 함께 대조해요.'],
+
+['교사가 운영하는 학습 도우미','수업·평가','통합','전체','정답 대신 힌트로 생각을 도와줘요.','문장제에서 필요한 정보 찾기','교사가 화면으로 운영할 학습 도우미 지침을 만들어 줘. 학생 질문을 쉬운 말로 되묻고 힌트 1개씩 제공하며 학생 설명을 기다려 줘. 정답을 바로 알려 주지 말고, 개인정보를 묻지 마. 틀린 답에는 다시 살펴볼 단서를 제안해 줘.','“무엇을 구해야 하는지 먼저 말해 볼까요?”','학생의 서비스 직접 이용은 연령·학교 계정 정책 확인이 선행돼요.'],
+
+['수업 자료 폴더 정리 계획','자료·콘텐츠','통합','전체','원본을 보존하며 자료를 찾기 쉽게 정리해요.','가상 파일: 5학년_분수_학습지.pdf, 생태사진.jpg, 학년협의_메모.txt','파일명 목록만 보고 분류 폴더와 새 파일명 제안 표를 만들어 줘. 확실하지 않으면 미분류로 두고 원본 삭제·덮어쓰기는 하지 않도록 작업 지침을 적어 줘.','수업/수학/분수 · 수업/과학/생태 · 학년업무/협의','이 앱은 PC 파일을 직접 이동하지 않아요.'],
+
+['학부모 상담 준비표','기록·상담','창체','전체','관찰과 해석을 분리해 함께 도울 방법을 찾아요.','가상 관찰: 모둠 활동에서 두 번 손을 들었지만 발표 기회를 얻지 못함','관찰 사실·학생에게 들을 내용·가정에 물어볼 질문·학교 지원으로 상담 준비표를 만들어 줘. 소극적이라는 낙인이나 가정환경 추측을 하지 마. 강점으로 대화를 시작하는 문장도 써 줘.','“발표하려는 시도가 보였습니다. 어떤 도움을 주면 좋을까요?”','학생부 전체나 민감한 상담 기록을 외부 서비스에 올리지 않아요.'],
+
+['행동특성 관찰 메모 다듬기','기록·상담','창체','전체','확인한 행동이 드러나는 문장으로 정리해요.','가상 관찰: 주 2회 모둠 도구를 점검하고 정리 방법을 친구에게 설명함','행동특성 및 종합의견의 참고용 문장 2개를 써 줘. 관찰에 없는 리더십·성격·감정을 추가하지 마. 관찰 사실과 표현 초안을 나란히 보여 줘.','모둠 도구를 점검하고 친구에게 정리 방법을 설명하며 공동 활동에 참여함.','해당 학년도 기재요령을 기준으로 교사가 최종 작성해요.'],
+
+['학급 행사 포스터','자료·콘텐츠','미술','전체','학생들이 한눈에 참여 방법을 알 수 있게 만들어요.','가상 행사: 우리 반 책 나눔, 교실, 읽은 책 1권 준비','포스터의 제목·짧은 안내·준비물·참여 방법을 작성하고 A4 인쇄용 HTML 제작 지침을 써 줘. 큰 제목과 충분한 여백을 사용해 줘. 미정 날짜는 빈칸으로 두고 실제 학생 사진은 쓰지 마.','“책 한 권, 새로운 만남” · 읽은 책 1권을 가져와요.','제목과 날짜는 텍스트로 확인하고 인쇄 미리보기를 점검해요.'],
+
+['과학 탐구 인포그래픽','자료·콘텐츠','과학','3~4·5~6','관찰 내용을 그림과 짧은 글로 연결해요.','씨앗 → 싹 → 잎과 줄기 → 꽃 → 열매','강낭콩 한살이를 5단계 인포그래픽으로 구성해 줘. 단계별 짧은 설명과 관찰 질문 1개를 제시해 줘. 모든 식물에 똑같이 적용된다고 말하지 마. 학생 관찰 사진을 넣을 빈칸도 표시해 줘.','“떡잎이 보인 날은 언제였나요?”','실제 식물 종과 관찰 조건을 확인해요.'],
+
+['짧은 수업 영상 스토리보드','자료·콘텐츠','통합','전체','긴 설명을 장면별 질문으로 나눠요.','급식실에서 음식물 쓰레기를 줄이는 방법','60초 영상의 장면 6개를 표로 만들어 줘. 장면·화면 요소·내레이션·자막·학생 질문을 포함하고, 죄책감을 주기보다 실천 선택지를 보여 줘. 실제 학생 얼굴과 이름은 사용하지 마.','받기 전 양 생각하기 → 먹을 만큼 받기 → 돌아보기','이 앱은 영상 생성기가 아니라 제작 지침을 준비해요.'],
+
+['학습 변화 집계표 읽기','기초학력','수학','전체','등수 대신 어떤 도움을 이어 갈지 살펴봐요.','가상 집계: 분수 비교 성공, 활동 전 12/24명, 활동 후 19/24명','성공 인원과 비율 변화, 차이를 계산해 줘. 활동 효과로 단정하지 말고 추가 관찰할 점을 3개 적어 줘. 다음 수업에서 필요한 기초·확장 활동을 제안해 줘.','12명 → 19명, 7명 증가 / 50.0% → 약 79.2%','측정 조건과 과제 난이도를 함께 검토해요.'],
+
+['사진 속 표를 데이터로','자료·콘텐츠','수학','전체','옮겨 적은 수치를 원본과 꼼꼼히 맞춰요.','가상 표: 월 12권 / 화 9권 / 수 15권','아래 표를 날짜·대출 권수 열로 정리하고 합계와 평균을 구해 줘. 읽을 수 없는 값은 추측하지 말고 [판독 불가]로 표시해 줘. 원본 대조 체크리스트도 만들어 줘.','합계 36권 / 하루 평균 12권','사진 업로드 전 이름·연락처·얼굴이 포함됐는지 확인해요.'],
+
+['학급 관리 스프레드시트 수식','학급·행정','통합','전체','가상 식별번호로 제출 현황을 정리해요.','A열 가상번호, B열 제출 여부(완료/미완료), 2~25행','완료 수와 미완료 수를 세는 COUNTIF 수식, 빈칸 수를 세는 COUNTBLANK 수식을 써 줘. 복사할 셀 위치와 적용 범위, 예시 결과를 설명해 줘. 범위를 임의로 늘리지 마.','완료 수: =COUNTIF(B2:B25,"완료")','수식은 가상 데이터에서 먼저 확인해요.'],
+
+['읽기 쉬운 수업 슬라이드','자료·콘텐츠','통합','전체','한 장에 한 가지 생각을 담아요.','우리 동네의 공공시설','수업용 슬라이드 8장 개요를 만들어 줘. 각 장에 제목·핵심 문장 2개·쉬운 그림 설명·학생 질문을 넣어 줘. 긴 문단을 피하고 글자를 크게 배치하도록 안내해 줘. 마지막은 우리 동네 조사 계획으로 마무리해 줘.','“도서관은 우리 생활을 어떻게 도울까요?”','학년과 교과 범위를 확인하고 실제 시설 정보는 제공 자료를 써요.'],
+
+['조건을 바꾸는 과학 탐구','수업·평가','과학','3~4·5~6','결과를 보기 전에 예상하고 실험으로 확인해요.','그늘과 햇빛에서 물의 증발 비교','탐구 계획서를 만들어 줘. 바꿀 조건은 햇빛 유무, 같게 할 조건은 물의 양·그릇·측정 시간으로 구성해 줘. 예상·관찰·측정 기록·해석 칸을 넣고 실제 실험 결과는 만들지 마. 안전 수칙과 예상과 다른 결과의 토의 질문을 적어 줘.','“두 그릇의 물의 양 외에 무엇을 같게 해야 할까요?”','가상 결과를 실제 관찰처럼 제시하지 않아요.'],
+
+['단원 마무리 골든벨','수업·평가','통합','전체','정답과 해설까지 함께 검토해요.','우리 반에서 배운 생물의 한살이','HTML 퀴즈 제작 지침과 문항 10개를 만들어 줘. OX 4개·객관식 6개, 정답·해설, 정답 공개 버튼, 6모둠 점수판, 다시 시작 기능을 넣어 줘. 틀려도 계속 참여하게 하고 소리 없는 타이머를 선택 기능으로 제안해 줘.','“모든 동물의 한살이는 같다.” → X, 동물마다 차이가 있어요.','문항의 사실과 정답을 교과서·수업 자료와 대조해요.'],
+
+['체험학습 신청 문항 설계','학급·행정','창체','전체','목적에 필요한 정보만 수집하도록 설계해요.','교내 주말 가족 독서 활동, 신청 여부와 참여 인원 조사','설문 제목·목적·문항·응답 형식·필수 여부를 표로 써 줘. 참여 여부·인원·확인 여부를 중심으로 하고 주민등록번호나 불필요한 건강 정보를 묻지 마. 수집 항목과 보관 안내는 [학교 기준 확인]으로 표시해 줘.','참여 여부 / 참여 인원 / 안내 내용 확인','실제 신청서 공개와 개인정보 수집 절차는 학교 기준에 맞춰요.'],
+
+['동의서 제출 현황 정리','학급·행정','창체','전체','누락과 중복을 구분해 다시 확인해요.','가상 전체: S01,S02,S03,S04 / 제출: S01,S03,S03','미제출·중복 목록과 전체 인원·제출 고유 인원을 표로 정리해 줘. 학생을 비난하지 않는 보호자용 재안내 문장 3줄을 작성해 줘. 중복 처리 기준이 없으면 확정하지 마.','미제출 S02,S04 / 중복 S03 / 제출 고유 인원 2명','공개 화면에는 개인별 제출 현황을 표시하지 않아요.'],
+
+['여러 양식의 수합 기준 만들기','학급·행정','창체','전체','파일 종류가 달라도 같은 항목으로 모아요.','가상 자료: 학년별 독서 행사 계획서 6개','계획서를 수합할 공통 열을 설계해 줘. 학년·활동명·시기·장소·담당·준비물·원본 파일명을 포함하고, 빈칸·중복·해석이 필요한 값의 처리 기준을 적어 줘. 읽지 못한 파일은 별도 목록으로 남겨 줘.','자료 수와 수합 행 수를 대조하는 확인표','파일을 읽을 수 있는지 먼저 확인하고 원본은 보존해요.'],
+
+['학년 협의 메모를 회의록으로','학급·행정','창체','전체','결정된 일과 더 논의할 일을 구분해요.','가상 메모: 생태 체험 11월 추진. 장소 미정. 준비물 목록은 금요일까지 학년 담당이 취합.','회의 개요·논의 내용·결정 사항·미결 사항·할 일 표로 정리해 줘. 없는 참석자·날짜는 [확인 필요]로 표시하고 제안을 결정 사항으로 바꾸지 마.','미결: 장소 / 할 일: 준비물 취합, 학년 담당, 금요일','최종 결정은 회의 참석자가 확인해요.'],
+
+['초등 과정중심 평가 계획','수업·평가','통합','전체','수업 중 어떤 배움을 어떻게 볼지 정해요.','모둠에서 생활 문제 해결 방법을 만들고 설명하기','학습 목표·관찰 시점·평가 방법·평가 요소·판단 근거·피드백·재도전 기회로 평가 계획 표를 작성해 줘. 지필·수행 비율이나 성취기준 코드를 임의로 정하지 마. 학교 양식과 교육과정 원문은 [교사 입력]으로 두어 줘.','평가 근거: 첫 설계, 수정 흔적, 설명, 성찰 기록','학교 평가 계획과 제공한 성취기준에 맞게 조정해요.'],
+
+['차분한 학부모 답장','기록·상담','창체','전체','공감과 확인할 사실, 다음 행동을 담아요.','가상 문의: 아이가 모둠 활동에서 계속 혼자 했다고 합니다.','담임의 답장 초안을 문자용 4문장, 상담용 7문장으로 써 줘. 걱정에 공감하고 수업 상황과 학생 이야기를 확인하겠다고 안내해 줘. 다른 학생 정보를 밝히거나 책임을 단정하지 마. 확인되지 않은 약속과 상담 시각은 만들지 마.','“아이의 이야기를 듣고 활동 과정을 확인하겠습니다.”','사실관계와 학교의 대응 절차를 확인한 뒤 보내요.'],
+
+['연수 내용을 교실 실천으로','학급·행정','통합','전체','요약에서 끝나지 않고 다음 수업에 연결해요.','가상 메모: AI 답변 검증, 개인정보 최소화, 질문 중심 활동 설계','연수 개요·배운 점·적용 계획·확인할 점으로 결과 보고서 초안을 써 줘. 동료 공유용 5줄 요약과 다음 주 수업에 적용할 작은 실천 1개를 만들어 줘. 모르는 강사명과 일정은 [확인 필요]로 표시해 줘.','실천: AI가 만든 과학 설명의 근거를 학생과 함께 대조하기','메모에 없는 참여 경험이나 성과를 추가하지 않아요.'],
+
+['학생 기록 문장 점검','기록·상담','통합','전체','새로 꾸미기보다 근거와 표현을 살펴봐요.','가상 문장: “수업시간에 역활을 나눔. 언제나 모든 친구에게 모범이 됨.”','오탈자·과도한 일반화·관찰 근거 부족을 표로 찾아 줘. 해당 부분과 수정 방향만 제시하고 학생 활동을 만들어 넣지 마. 공식 기재 금지 여부는 제공된 해당 학년도 기재요령이 없으면 판단을 보류해 줘.','역활 → 역할 / “언제나 모든”은 근거 확인 필요','글자 수·기재 기준을 임의로 정하지 않아요.'],
+
+['창체 동아리 운영 계획','진로·창체','창체','전체','학생이 선택하고 돌아보는 활동을 이어 가요.','종이로 발명하는 우리 반, 8회, 회당 40분','회차별 목표·학생 선택·만들기 활동·준비물·안전·돌아보기로 계획을 써 줘. 실패한 설계를 고치는 시간을 넣고, 결과물 완성도 외에 협력과 수정 과정의 관찰 항목을 만들어 줘.','문제 발견 → 설계 → 만들기 → 시험 → 고쳐 만들기','도구와 재료는 학년 수준과 안전 조건에 맞춰요.'],
+
+['담임의 주간 업무 계획','학급·행정','창체','전체','수업 준비 시간도 일정에 넣어요.','가상 일정: 화 학년 협의, 수 학부모 상담, 금 체험학습 안내 마감','긴급·중요·소요 시간·선행 작업으로 정리하고 요일별 계획을 제안해 줘. 수업과 휴식 시간을 임의로 침범하지 마. 시간 정보가 없으면 고정 시각 대신 오전/방과후 후보로 표시해 줘.','안내문 사실 확인 → 초안 → 검토 → 금요일 배부','캘린더에 자동 등록되는 기능은 아니며 교사가 확인해 옮겨요.'],
+
+['출처와 이용 조건 점검','자료·콘텐츠','통합','전체','교실 사용과 공개 배포의 조건을 구분해요.','가상 자료: 인터넷 그림, 기사 일부, AI 생성 그림','자료별 출처·이용허락·수업 안 사용·공개 게시 여부를 확인할 질문 표로 만들어 줘. 법적 허용 여부를 확정하지 마. 확인된 정보가 없으면 [이용 조건 확인 필요]로 표시하고 출처 표기 틀을 제안해 줘.','제작자 / 자료명 / 원문 URL / 이용 조건 / 확인일','AI가 만든 이미지도 저작권 문제가 없다고 단정하지 않아요.']
+
+].map((x,i)=>({id:i+1,title:x[0],category:x[1],subject:x[2],bands:x[3],desc:x[4],example:x[5],task:x[6],result:x[7],check:x[8]}));
+
+// 초등 교과와 담당 업무를 위한 보강 사례
+
+[
+
+['친구의 입장에서 생각하는 도덕 수업','수업·평가','도덕','3~4·5~6','생활 속 갈등에서 서로의 마음과 이유를 살펴봐요.','놀이 규칙을 정할 때 친구의 의견이 받아들여지지 않은 상황','40분 수업으로 감정 알아차리기–입장 바꾸기–대안 선택하기–성찰을 구성해 줘. 한쪽을 나쁜 사람으로 정하지 말고 상황 카드 3개, 대화 문장 틀, 자기평가 3문항을 만들어 줘.','“네 생각을 먼저 들어 보고 함께 정하면 어떨까?”','실제 학생 간 갈등을 알아볼 수 있는 정보는 넣지 않아요.'],
+
+['리듬을 만들고 나누는 음악 수업','수업·평가','음악','3~4·5~6','다양한 방식으로 리듬을 표현하고 함께 연주해요.','4박자 리듬을 손뼉과 책상 두드리기로 표현하기','40분 수업으로 리듬 듣기–따라 하기–4박 리듬 만들기–모둠 연주를 구성해 줘. 기본 리듬 4개를 글과 기호로 설명하고 쉼을 포함해 줘. 소리에 민감한 학생을 위한 무음 몸짓 활동도 제안해 줘.','손뼉–손뼉–쉼–무릎치기','음악 용어와 박의 합을 확인하고 큰 소리가 나지 않도록 조절해요.'],
+
+['누구나 참여하는 체육 활동','수업·평가','체육','3~4·5~6','기록 경쟁보다 움직임과 협력에 초점을 맞춰요.','공을 주고받으며 목표 지점으로 이동하는 협동 놀이','40분 체육 수업을 준비운동–기능 연습–협동 놀이–정리운동으로 구성해 줘. 학생 수와 공간은 [교사 입력]으로 남겨 줘. 공 크기·거리·이동 방법을 선택할 수 있게 하고 충돌 예방, 쉬는 구역, 관찰 체크리스트를 포함해 줘.','목표: 친구가 받기 좋은 위치로 공 보내기','학생 건강·공간·용구 상태를 확인한 교사가 난이도를 조절해요.'],
+
+['시간과 용돈을 계획하는 실과','수업·평가','실과','5~6','생활 속 선택을 계획하고 실천 후 돌아봐요.','가상 용돈 10,000원으로 필요한 물건과 저축 계획 세우기','필요와 욕구를 구분하는 선택 카드, 예산 계획표, 예상과 실제 비교표를 만들어 줘. 총액 10,000원을 넘지 않는 가상 예시 2개를 검산해 줘. 실제 가정 소득이나 용돈 금액을 공개하게 하지 마.','필요한 물건 4,000원 + 나눔 1,000원 + 저축 5,000원','학생의 경제적 배경을 비교하거나 평가하지 않아요.'],
+
+['학교를 알아가는 통합교과 활동','수업·평가','통합','1~2','그림과 놀이로 학교생활을 익혀요.','우리 학교에서 안전하게 함께 생활하기','1~2학년 통합교과 활동으로 그림 살펴보기–학교 공간 탐색–약속 카드 만들기를 설계해 줘. 짧은 구두 안내, 이동 짝, 교사 확인 지점, 그림이나 말로 표현하는 선택을 넣어 줘. 성취기준은 제공하지 않았으므로 만들지 마.','“복도에서는 어떻게 이동하면 서로 안전할까요?”','실제 이동 동선과 학생 지원 요구는 교사가 확인해요.'],
+
+['학교 현안 의사결정 요약','학급·행정','창체','전체','관리자가 대안과 확인 사항을 빠르게 비교해요.','가상 현안: 도서관 활용 확대 / 대안 A: 아침 개방, B: 점심 개방 / 인력·예산 미정','현안 한 줄 요약, 대안별 장점·제약·필요 자료, 결정 전 확인 질문, 확정 후 할 일 표를 만들어 줘. 예산·법령·인력 기준을 지어내지 말고 미정은 [확인 필요]로 표시해 줘.','대안 A·B 비교 → 인력 확인 → 운영 시간 협의','제안과 확정 사항을 구분하고 학교 의사결정 절차를 따라요.'],
+
+['학교 행사 인사말','학급·행정','창체','전체','행사의 취지와 학생의 경험을 중심으로 전해요.','가상 행사: 초등 독서 축제 개회, 2분 인사말','초등학생이 이해할 말로 환영–책 읽기의 즐거움–참여 격려–맺음말 순서의 인사말을 써 줘. 실제로 없었던 학생 일화나 수상 실적은 추가하지 마. 낭독 시 쉴 지점을 표시해 줘.','“오늘은 마음에 남는 한 문장을 함께 찾아봅시다.”','학교와 행사의 실제 이름·일정은 최종 확인해요.'],
+
+['접근 가능한 활동지로 바꾸기','기초학력','통합','전체','같은 배움에 여러 참여 방법을 마련해요.','문장 읽고 생활 문제의 해결 방법 쓰기','문장 길이를 줄인 버전, 그림 선택 버전, 구술 응답 버전으로 활동을 조정해 줘. 학습 목표는 유지하고 지원 수준별 교사 발문을 제시해 줘. 학생의 진단명·의료 정보는 요청하지 마.','쓰기 / 그림 선택 / 말로 설명 중 응답 방법 고르기','실제 개별화교육계획과 학생의 지원 요구를 교사가 반영해요.'],
+
+['학교 안전교육 안내 자료','학급·행정','창체','전체','위험을 알아차리고 도움을 요청하는 방법을 익혀요.','가상 상황: 복도에 물이 쏟아져 있음','학생용 그림 상황 안내, 즉시 할 행동 3개, 어른에게 알리는 문장, 가정 안내 4줄을 작성해 줘. 응급 처치의 의학적 절차는 만들지 말고 학교 안전 매뉴얼 확인 항목으로 남겨 줘.','접근 멈추기 → 주변 친구에게 알리기 → 선생님께 도움 요청','학교 안전 매뉴얼과 담당 교사의 안내를 우선해요.'],
+
+['학년 교육과정 협의표','학급·행정','통합','전체','학년의 목표와 평가 근거를 함께 설계해요.','가상 협의 주제: 우리 동네 생태 프로젝트, 교과 연계 4차시','관련 교과·학습 목표·학생 활동·관찰 근거·준비물·담당·협의 상태로 표를 구성해 줘. 시수와 성취기준은 [교육과정 원문 확인]으로 표시하고 교과별 활동을 억지로 연결하지 마.','함께 정할 목표 → 교과 연결 점검 → 관찰 근거 합의','학교 교육과정과 해당 학년 성취기준을 대조해요.']
+
+].forEach((x)=>cases.push({id:cases.length+1,title:x[0],category:x[1],subject:x[2],bands:x[3],desc:x[4],example:x[5],task:x[6],result:x[7],check:x[8]}));
+
+const elementarySubjects=['공통','통합','국어','도덕','사회','수학','과학','실과','체육','음악','미술','영어','창체'];
+
+const schoolRoles=['관리자','교무부','연구부','교육과정부','생활교육부','정보부','1학년부','2학년부','3학년부','4학년부','5학년부','6학년부','담임','교과전담','특수교육','보건·안전'];
+
+// 업무 연결은 각 사례의 실제 수행자와 산출물에 근거해 명시한다.
+
+const teachingRoles={
+
+1:['담임','교과전담'],2:['담임'],3:['담임','교과전담'],4:['담임','교과전담'],5:['담임','교과전담'],6:['담임','교과전담'],7:['담임','교과전담'],8:['담임','교과전담'],9:['담임'],10:['담임'],11:['담임','교과전담'],12:['담임'],13:['담임'],14:['담임'],15:['담임'],16:['담임'],17:['담임','학년부'],18:['교무부'],19:['담임','교과전담'],20:['담임','교과전담'],21:['담임'],22:['담임'],23:['담임'],24:['담임','교과전담'],25:['담임','교과전담'],26:['담임','교과전담'],27:['담임','교과전담'],28:['담임'],29:['담임','교과전담'],30:['담임','교과전담'],31:['담임','교과전담'],32:['담임'],33:['담임'],34:['학년부'],35:['학년부'],36:['담임','교과전담'],37:['담임'],38:['담임','교과전담'],39:['담임','교과전담'],40:['담임'],41:['담임'],42:['담임','교과전담','정보부'],43:['담임','교과전담'],44:['담임','교과전담'],45:['담임','교과전담'],46:['담임','교과전담'],47:['담임'],48:['관리자'],49:['관리자'],50:['특수교육'],51:['보건·안전'],52:['학년부']
+
+};
+
+const schoolWorkIds=[18,20,28,32,33,34,35,38,41,48,49,51,52];
+
+for(const c of cases){
+
+ c.roles=teachingRoles[c.id]||[];
+
+ c.profile=schoolWorkIds.includes(c.id)?'work':'teaching';
+
+ if([48,49,18,34,35,52].includes(c.id))c.subject='공통';
+
+ c.minGrade=c.bands==='전체'?1:c.bands.startsWith('1')?1:c.bands.startsWith('3')?3:5;
+
+ c.maxGrade=c.bands==='전체'||c.bands.includes('5~6')?6:c.bands.includes('3~4')?4:2;
+
+}
+
+const specialistCases=[
+
+['관리자','학교 소개·교육활동 홍보 자료','자료·콘텐츠','학교가 제공한 교육활동 사실을 학부모용 소개 자료로 정리해요.','가상 학교 자료: 생태 탐구 주간 운영, 학생자치 제안 활동, 학부모 수업 나눔','학교 소개 카드뉴스 6장의 제목·본문·이미지 구상과 누리집 소개문을 써 줘. 제시한 활동만 활용하고 실제 성과 수치·수상·시설을 만들어 내지 마. 학생 개인을 알아볼 수 있는 정보와 사진은 쓰지 마.','학교의 교육 방향 → 실제 활동 → 참여·소통 안내','학교장이 검토할 사실 확인 목록과 공개 전 확인 사항을 따로 제시해요.'],
+
+['관리자','학교 자체평가 결과 검토','학급·행정','평가 근거와 개선 과제를 연결해 관리자 검토 자료를 만들어요.','가상 집계: 교사 의견 12건, 학부모 의견 18건. 학생 참여 확대 요구 8건, 소통 개선 요구 5건. 다른 항목과 중복 여부는 미확인','제공된 수치만 표로 정리하고 핵심 쟁점·추가 확인 자료·개선 과제 후보·협의할 부서를 작성해 줘. 총응답 비율을 계산하지 말고 중복·모집단 확인 필요를 표시해 줘. 학교의 성과 수준을 단정하지 마.','근거 확인 → 쟁점 정리 → 개선 과제 협의','자체평가 기준과 학교가 확정한 지표를 제공하기 전에는 평가 점수를 만들지 않아요.'],
+
+['관리자','부서 현안·후속 조치 관리','학급·행정','교무·연구·생활교육 부서의 보고를 결재·조정 관점에서 모아요.','가상 보고: 교무부 행사 동선 협의 필요 / 연구부 연수 장소 확정 필요 / 생활교육부 공동생활 약속 안내 검토 요청','안건별 보고 사실·결정 요청·추가 확인·담당 부서·후속 조치로 관리자 검토표를 만들어 줘. 결정하지 않은 일을 승인으로 표시하지 말고, 기한과 예산이 없으면 [확인 필요]로 남겨 줘.','보고 사실 / 결정 요청 / 담당 / 후속 확인 구분','학교 규정·결재 권한·부서 분장은 학교의 실제 문서를 확인해요.'],
+
+['교무부','학사 일정·월별 안내 정리','학급·행정','확정된 학교 일정을 월별 안내와 업무 일정으로 정리해요.','가상 일정: 11월 학부모 상담 주간, 12월 교육활동 발표회. 정확한 날짜는 미정','확정 일정과 미정 일정을 구분한 월별 표, 부서 확인 목록, 학부모 안내 초안을 작성해 줘. 날짜·요일·휴업일·수업일수를 임의로 확정하지 마.','학교 확정 일정 → 대상별 안내 → 변경 사항 확인','학사 일정과 수업일수는 학교 교육계획 원문과 대조해요.'],
+
+['교무부','규정 개정 신구대조표 정리','학급·행정','제공된 현행·개정 문구를 바탕으로 협의 자료를 만들어요.','가상 현행: 자료 제출 시 담당 부서에 알림 / 가상 개정안: 지정 제출함에 올리고 담당 부서에 알림','현행·개정안·변경 내용·확인할 점을 표로 정리해 줘. 제공되지 않은 조문 번호·법적 의무·기한을 만들지 마. 개정 이유가 없으면 [협의 필요]로 남겨 줘.','현재 문구와 개정 문구를 나란히 비교','법적 적합성을 AI가 확정하지 않고 관련 원문과 학교 심의 절차를 확인해요.'],
+
+['교무부','교직원 연수 이수 집계 양식','학급·행정','가상 식별번호로 이수 시간 집계의 수식과 검증 방법을 설계해요.','가상 열: 교사ID / 연수명 / 구분 / 이수시간 / 이수일. T01 직무 3시간, T01 자율 2시간, T02 직무 4시간','ID별·구분별 이수 시간 집계표와 SUMIFS 수식을 작성해 줘. 중복·빈칸·숫자가 아닌 시간값 점검법을 포함해 줘. 필수 이수 기준을 제시하지 않았으므로 미이수 여부는 판단하지 마.','T01 총 5시간, 직무 3시간·자율 2시간','실제 명단 대신 가상 자료로 수식을 검증하고 필수 기준은 학교가 입력해요.'],
+
+['연구부','교내 연수·전문적 학습공동체 계획','학급·행정','교원 연수와 수업 나눔의 목표·활동·산출물을 연결해요.','가상 계획: 희망 교사 12명, 6회, 주제는 질문 중심 AI 활용 수업','목표 3개, 회차별 활동·실습·산출물·공유 방법, 평가 및 환류 계획을 써 줘. 강사·예산·일정은 [협의 필요]로 남기고 수업 나눔과 공동 성찰을 포함해 줘.','공통 문제 찾기 → 설계 → 적용 → 수업 나눔 → 개선','연수 시간·예산·운영 절차는 학교 계획과 확인해요.'],
+
+['연구부','수업 공개 관찰지·협의록','학급·행정','교사의 실제 관찰을 바탕으로 배움과 수업 지원을 살펴봐요.','가상 관찰: 초등 과학 모둠 탐구, 학생 질문 3개 기록, 조작 활동 참여가 고르지 않음, 교사 추가 힌트 제공','학생 배움·질문·참여·교사 지원·평가 근거의 관찰지와 협의록 초안을 작성해 줘. 관찰 사실과 해석·제안을 구분하고 수업자 소감은 빈칸으로 남겨 줘.','관찰 사실 → 배움의 근거 → 다음 수업의 지원 제안','수업자를 서열화하지 않고 실제 관찰 근거를 중심으로 협의해요.'],
+
+['연구부','연구·선도학교 운영 결과 정리','학급·행정','운영 실적·증거·개선 과제를 연결한 보고서 초안을 만들어요.','가상 실적: 교사 연수 4회, 공동 자료 12종, 수업 나눔 2회. 학생 변화 검증 자료는 없음','운영 배경·과정·산출물·확인된 실적·한계·다음 계획으로 목차와 요약을 작성해 줘. 검증하지 않은 효과를 성과로 단정하지 말고 증거 자료가 필요한 곳을 표시해 줘.','실적 4회·12종·2회와 효과 검증의 구분','사진·학생 작품 등 첨부 자료의 동의·공개 범위를 확인해요.'],
+
+['교육과정부','학교 교육과정 편성 검토표','학급·행정','제공된 편성 자료의 누락과 확인 항목을 점검해요.','가상 자료: 학년별 교과·창체 시수표는 교사 입력 예정','학년·교과·학교 입력 시수·원문 기준·차이·확인 사항의 검토 양식을 만들어 줘. 법정 시수·증감 범위·성취기준 코드는 원문을 받기 전까지 빈칸으로 남겨 줘.','학교 입력 시수와 제공한 교육과정 원문의 대조','확정된 교육과정 문서와 학교 편성표를 기준으로 검토해요.'],
+
+['교육과정부','학교자율시간 설계 협의','학급·행정','학교의 여건과 교육적 필요를 바탕으로 협의 틀을 만들어요.','가상 여건: 지역 생태 탐구에 관심, 학년·시수·운영 조건은 미정','학생 요구·지역 여건·목표 후보·활동 후보·평가 근거·확인할 운영 조건을 협의표로 만들어 줘. 적용 학년과 편성 시수는 공식 지침을 받기 전까지 확정하지 마.','여건 분석 → 목표 협의 → 활동·평가 연결 → 지침 대조','해당 학년도 교육과정과 교육청 운영 안내를 제공해 확인해요.'],
+
+['교육과정부','교과·창체 연계와 중복 점검','학급·행정','교육활동의 목표·시수·내용 중복을 확인해요.','가상 활동: 생태 탐구 프로젝트, 환경 동아리, 생명 존중 주간. 세부 차시 미정','활동별 목표·교과/창체 연결 근거·공통 내용·차별화할 내용·담당 협의 사항을 표로 정리해 줘. 하나의 활동을 여러 시수로 중복 계산하지 않도록 점검 질문을 제안해 줘.','같은 목표인지 확인하고 활동별 역할 구분','편성·평가 기준은 학교 교육과정과 원문 지침을 대조해요.'],
+
+['생활교육부','학교 생활 약속 안내 자료','학급·행정','생활 약속을 학생 안내와 교직원 공유 자료로 나눠요.','가상 공동 약속: 서로의 말을 끝까지 듣기, 복도에서 걷기, 도움이 필요하면 어른에게 알리기','초등학생용 쉬운 안내문, 교직원 공동 지도 질문, 가정 안내문을 만들어 줘. 벌점·징계·처리 기한을 만들어 넣지 말고 학생이 이유를 설명하는 활동을 포함해 줘.','약속의 이유 → 실천 방법 → 도움 요청 방법','실제 학교생활규정과 지도 계획에 맞춰 확인해요.'],
+
+['생활교육부','생활교육 예방 활동 운영안','학급·행정','특정 학생을 지목하지 않는 예방 활동을 계획해요.','가상 주제: 친구의 거절 존중하기, 도움 요청하기','학급 활동 안내·교사 발문·학생 실천 카드·활동 후 성찰로 운영안을 만들어 줘. 사건의 가해·피해 여부를 판단하거나 실제 사례를 재현하지 마.','상대의 뜻 듣기 → 행동 멈추기 → 도움 요청','실제 사안 처리는 이 예방 활동안과 구분하고 학교의 공식 절차를 따라요.'],
+
+['생활교육부','생활교육 업무 매뉴얼 읽기 틀','학급·행정','제공된 매뉴얼에서 담당 업무와 근거를 찾는 양식을 만들어요.','학교 담당자가 제공할 공식 매뉴얼 원문은 아직 없음','질문·원문 조항/쪽수·근거 문장·담당 확인·추가 확인으로 답변 양식을 만들어 줘. 원문이 없으므로 법령·절차·기한은 제시하지 마. 사안 판단 대신 필요한 정보를 정리해 줘.','질문 → 원문 근거 → 확인 사항','학생의 상담 내용·사안 자료를 외부 AI 서비스에 입력하지 않아요.'],
+
+['정보부','에듀테크 도입·계정 운영 점검','학급·행정','수업 목적·계정 조건·데이터 취급을 도입 전에 검토해요.','가상 도구: 교사용 퀴즈 제작 서비스. 요금·연령·저장 위치·학교 계약은 미확인','교육 목적·학교 계정 지원·연령·최소 수집 정보·공개 범위·보관/삭제·계약 확인의 체크리스트를 써 줘. 실제 서비스 조건을 추측하지 마.','교육 목적과 도구 제공 조건을 나란히 확인','학교 보안·개인정보 지침과 실제 약관을 담당자가 확인해요.'],
+
+['정보부','스마트기기 대여·점검 현황','학급·행정','자산번호 중심의 기기 관리표와 점검 기준을 만들어요.','가상 기기 D01 정상, D02 충전 확인 필요, D03 화면 파손 점검 중','기기ID·보관 위치·상태·대여/반납·점검일·후속 조치 열의 관리표와 상태별 집계 수식을 써 줘. 학생 이름·계정 비밀번호·접속 기록은 수집하지 마.','정상 1대 / 확인 필요 1대 / 점검 중 1대','파손 원인이나 책임을 임의로 판단하지 않아요.'],
+
+['정보부','교직원 디지털 도구 사용 안내','자료·콘텐츠','설정 안내와 문제 해결을 짧은 순서도로 정리해요.','가상 내용: 학교 계정 로그인 → 지정 공유 폴더 확인 → 연습 문서 생성. 실제 화면 자료는 미제공','교직원용 안내문을 준비 단계·이용 순서·오류 시 확인·문의처로 작성해 줘. 실제 버튼명·비밀번호·내부 주소는 만들지 말고 [학교 입력]으로 표시해 줘.','목적 → 준비 → 순서 → 확인 → 문의','계정 비밀번호나 인증번호를 공유하도록 안내하지 않아요.'],
+
+['학년부','학년 공동 행사 운영 협의','학급·행정','학년 단위 운영의 역할·준비물·동선을 함께 정해요.','가상 행사: 학년 독서 나눔. 학급 수·날짜·공간은 미정','학년 협의용 목표·학급별 역할·공동 준비물·학생 이동·지원·우천 대안·확정 필요 항목으로 계획표를 써 줘. 담당을 임의 지정하지 마.','학년 공통 준비와 학급별 준비 구분','선택한 학년 학생의 이동·읽기 수준을 고려해 협의해요.'],
+
+['학년부','학년 공통 준비물·예산 수합','학급·행정','학급별 요청을 비교하고 중복·수량을 점검해요.','가상 요청: A반 색종이 20묶음, B반 15묶음. 단가와 보유 수량 미확인','요청 수량·보유량·추가 필요량·단가·예상액·확인 사항을 수합하는 표를 만들어 줘. 모르는 단가와 보유량은 빈칸으로 남기고 수량 합계를 검산해 줘.','요청 합계 35묶음 / 추가 구매량은 보유량 확인 후 결정','실제 학교 예산 집행 기준과 확정 견적을 확인해요.'],
+
+['특수교육','지원 협의회 준비 자료','학급·행정','학생의 강점과 참여 지원을 협의할 양식을 준비해요.','가상 관찰: 그림 선택으로 활동 의사를 표현함. 지원 목표와 개별 계획은 교사 입력 예정','강점·학생의 의사·현재 참여 방식·지원 목표·학교 지원·협의할 점으로 빈 양식을 만들어 줘. 진단명·의료 정보·가정 정보를 요청하지 마.','학생 의사와 관찰 근거를 중심으로 지원 협의','실제 개별화교육계획과 담당 교사의 판단을 반영해요.'],
+
+['특수교육','통합학급 협력 지원 계획','학급·행정','담임과 특수교사가 함께 지원할 장면과 방법을 정해요.','가상 수업: 모둠 만들기 활동. 그림 순서표·재료 선택·구술 응답을 지원 후보로 검토','활동 장면·가능한 참여 방식·담임 지원·특수교사 협력·관찰할 근거의 협의표를 써 줘. 학생을 분리하는 것을 기본 대안으로 제시하지 마.','같은 목표에 참여 방식과 지원을 다양하게 마련','학생의 실제 요구·의사와 교사 협의를 우선해요.'],
+
+['보건·안전','학교 보건·안전교육 운영 협의','학급·행정','교육 일정과 대상별 안내를 제공된 계획에 맞춰 정리해요.','가상 교육 주제: 손 씻기, 도움 요청, 교실 안전. 일정·시수·담당 미정','주제·대상·운영 방식·가정 안내·확인할 원문·담당 협의의 표를 만들어 줘. 법정 시수·응급처치·의학적 처방을 만들지 마.','확정한 주제와 미정인 일정·담당을 분리','학교 보건·안전 계획과 최신 공식 안내를 확인해요.'],
+
+['보건·안전','학교 안전점검 결과 수합','학급·행정','점검 사실과 후속 확인을 정리해 누락을 줄여요.','가상 점검: 복도 미끄럼 주의 표지 필요 / 도서관 통로 정리 필요','장소·관찰 사실·임시 안내·담당 확인·조치 상태·재점검의 표를 만들어 줘. 사고 책임이나 위험 등급을 단정하지 마.','발견 내용 → 담당 협의 → 조치 → 재확인','실제 위험은 학교의 안전 매뉴얼과 담당 부서가 판단해요.']
+
+];
+
+for(const [role,title,category,desc,example,task,result,check] of specialistCases){cases.push({id:cases.length+1,title,category,subject:'공통',bands:'전체',desc,example,task,result,check,roles:[role],profile:'work',minGrade:1,maxGrade:6})}
+
+for(const c of cases){c.key=c.key||'case-'+c.id;c.scope=c.roles.join('·');}
+
+// 교과 공통 자료와 저학년 통합교과를 분리한다.
+
+for(const c of cases){
+
+ if(c.subject==='통합'&&c.id!==47)c.subject='교과 공통';
+
+ if(c.id===47){c.minGrade=1;c.maxGrade=2;c.bands='1~2'}
+
+ if(c.id===19)c.subject='수학';
+
+ if(c.id===29){c.subject='사회';c.minGrade=3;c.maxGrade=6;c.bands='3~4·5~6'}
+
+ if(c.id===31){c.subject='과학';c.minGrade=3;c.maxGrade=6;c.bands='3~4·5~6'}
+
+ if([8,10,16,21,22,23,26,27,36,37,39,42].includes(c.id))c.profile='work';
+
+}
+
+elementarySubjects.splice(0,elementarySubjects.length,'공통','교과 공통','통합','국어','도덕','사회','수학','과학','실과','체육','음악','미술','영어','창체');
+
+const roleDescriptions={
+
+'관리자':'학교 운영·의사결정·학교 자체평가·인사말·홍보 자료만 연결합니다.',
+
+'교무부':'학사 일정·규정 문구 정리·교직원 이수 집계 등 교무 운영 업무를 연결합니다.',
+
+'연구부':'교내 연수·수업 나눔·연구학교 보고 등 연구 업무를 연결합니다.',
+
+'교육과정부':'교육과정 편성·학교자율시간·교과 및 창체 연계를 연결합니다.',
+
+'생활교육부':'학교 생활 약속·예방 활동·매뉴얼 근거 확인 업무를 연결합니다.',
+
+'정보부':'계정·기기 관리·교직원 디지털 도구 안내·이용 조건 점검을 연결합니다.',
+
+'담임':'학급 수업·학부모 소통·학생 관찰·학급 운영 사례를 연결합니다.',
+
+'교과전담':'교과 수업 설계·활동 자료·평가 관련 사례를 연결합니다.',
+
+'특수교육':'지원 협의·통합학급 협력·참여 방식 조정 사례를 연결합니다.',
+
+'보건·안전':'학교 보건·안전교육과 안전점검 업무를 연결합니다.'
+
+};
+
+// 행정·상담·제작 산출물에는 수업 시간 조건을 붙이지 않는다.
+
+for(const c of cases){
+
+ if(['학급·행정','기록·상담'].includes(c.category)||[4,9,20,23,25,26,27,42].includes(c.id))c.profile='work';
+
+}
+
+// 교과 외 행정과 실제 교과 수업을 과목 필터에서 혼합하지 않는다.
+
+for(const c of cases){
+
+ if([9,10,14,15,16,17,20,21,22,23,27,28,32,33,37,38,41,51].includes(c.id))c.subject='공통';
+
+ if(c.id===8){c.subject='수학';c.minGrade=3;c.maxGrade=6;c.bands='3~4·5~6'}
+
+ if(c.id===26){c.minGrade=3;c.maxGrade=6;c.bands='3~4·5~6'}
+
+}
+
+app.js
+
+const $=s=>document.querySelector(s);
+
+const read=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}};
+
+const persist=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{toast('브라우저 저장이 제한되어 이번 화면에서만 유지됩니다.')}};
+
+const savedFavorites=read('elementary-ai-favorites',[]);let favorites=new Set((Array.isArray(savedFavorites)?savedFavorites:[]).filter(x=>Number.isInteger(x)&&cases.some(c=>c.id===x)));const promptDrafts=new Map();
+
+let checks=read('elementary-ai-checks',[]);checks=Array.isArray(checks)?[...new Set(checks.filter(n=>Number.isInteger(n)&&n>=0&&n<6))]:[];
+
+let view='home',category='전체',current=null,openGroup='';
+
+const categories=['전체','수업·평가','기초학력','진로·창체','학급·행정','기록·상담','자료·콘텐츠'];
+
+const icons={'수업·평가':'▤','기초학력':'↗','진로·창체':'✳','학급·행정':'▦','기록·상담':'☏','자료·콘텐츠':'◇'};
+
+let subnavCollapsed=read('elementary-ai-subnav-collapsed',false)===true;
+
+const storedCategoryUsage=read('elementary-ai-category-usage',{});
+
+const categoryUsage=Object.fromEntries(categories.filter(n=>n!=='전체').map(n=>[n,Number.isSafeInteger(storedCategoryUsage?.[n])&&storedCategoryUsage[n]>0?storedCategoryUsage[n]:0]));
+
+function rankedCategories(){return categories.filter(n=>n!=='전체').sort((a,b)=>categoryUsage[b]-categoryUsage[a]||categories.indexOf(a)-categories.indexOf(b))}
+
+function recordCategoryUse(name){
+
+ if(!Object.hasOwn(categoryUsage,name))return;
+
+ categoryUsage[name]=Math.min(categoryUsage[name]+1,Number.MAX_SAFE_INTEGER);
+
+ persist('elementary-ai-category-usage',categoryUsage);
+
+}
+
+function updateSubnavVisibility(){
+
+ $('#case-subnav').hidden=subnavCollapsed;
+
+ const button=$('#case-subnav-toggle');
+
+ button.setAttribute('aria-expanded',String(!subnavCollapsed));
+
+ button.setAttribute('aria-label',subnavCollapsed?'하위 카테고리 펼치기':'하위 카테고리 접기');
+
+ button.classList.toggle('collapsed',subnavCollapsed);
+
+}
+
+const colors={'수업·평가':'#edf3e3','기초학력':'#f9eddb','진로·창체':'#ede8f6','학급·행정':'#e6edf6','기록·상담':'#f8e8e2','자료·콘텐츠':'#e5f1eb'};
+
+function esc(t){return String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+
+function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),3200)}
+
+async function copy(t,field){try{await navigator.clipboard.writeText(t);toast('복사했어요. AI 입력창에 붙여 넣어 주세요.')}catch{field.focus();field.select();try{if(!document.execCommand('copy'))throw Error();toast('프롬프트를 복사했어요.')}catch{toast('텍스트를 선택했습니다. Ctrl+C 또는 길게 눌러 복사해 주세요.')}}}
+
+function download(t,name){const u=URL.createObjectURL(new Blob(['\ufeff'+t],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=u;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1000)}
+
+function toggleFavorite(id){favorites.has(id)?favorites.delete(id):favorites.add(id);persist('elementary-ai-favorites',[...favorites]);render();if(current&&current.id===id)updateSave();}
+
+function updateSave(){$('#save').textContent=favorites.has(current.id)?'★ 저장됨':'☆ 저장하기';$('#save').setAttribute('aria-pressed',favorites.has(current.id))}
+
+function matchGrade(c,g){if(!g)return true;const n=parseInt(g);return n>=c.minGrade&&n<=c.maxGrade}
+
+function renderCaseSubnav(){
+
+ $('#case-subnav').innerHTML='<div class="subnav-sort-label">자주 사용한 순</div>'+rankedCategories().map(name=>{
+
+  const selected=view==='cases'&&category===name;
+
+  const count=filteredCases().filter(c=>c.category===name).length;
+
+  return `<button class="subnav-item ${selected?'active':''}" data-jump-category="${esc(name)}" ${selected?'aria-current="true"':''}><span class="subnav-dot" aria-hidden="true"></span><span>${esc(name)}</span><small title="${count}개 사례">${count}</small></button>`;
+
+ }).join('');
+
+ updateSubnavVisibility();
+
+}
+
+function jumpToCategory(name){
+
+ if(!categories.includes(name)||name==='전체')return;
+
+ recordCategoryUse(name);
+
+ category=name;openGroup='category:'+name;
+
+ $('#groupby').value='category';
+
+ setView('cases');
+
+ requestAnimationFrame(()=>{
+
+  const target=$('#grid').querySelector('details');
+
+  if(!target){$('#caseview').scrollIntoView({block:'start',behavior:'instant'});return;}
+
+  const summary=target.querySelector('summary');
+
+  if(summary)summary.focus({preventScroll:true});
+
+  target.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});
+
+ });
+
+}
+
+function filteredCases({includeCategory=false,onlyFavorites=false}={}){
+
+ const role=$('#workrole').value,subject=$('#side-subject').value,q=$('#side-search').value.trim().toLowerCase(),grade=$('#grade').value;
+
+ return cases.filter(c=>(!onlyFavorites||favorites.has(c.id))&&matchRole(c,role)&&matchSubject(c,subject)&&matchGrade(c,grade)&&(!includeCategory||category==='전체'||c.category===category)&&(!q||[c.title,c.desc,c.example,c.task,c.subject,c.category,...c.roles].join(' ').toLowerCase().includes(q)));
+
+}
+
+function filterDescription(){return '업무：'+($('#workrole').value||'전체')+' · 과목：'+($('#side-subject').value||'전체')+' · 학년：'+($('#grade').value||'전체')+($('#side-search').value.trim()?' · 검색：'+$('#side-search').value.trim():'')}
+
+function render(){
+
+ renderCaseSubnav();renderCustom();
+
+ const list=filteredCases({includeCategory:true,onlyFavorites:view==='favorites'});renderGroups(list);
+
+ $('#empty').hidden=list.length>0;
+
+ $('#case-selection').textContent=filterDescription();
+
+ $('#resultcount').textContent=(view==='favorites'?'저장 '+favorites.size+'개':'전체 '+cases.length+'개')+' · 현재 조건 '+list.length+'개';
+
+ $('#favcount').textContent=favorites.size;
+
+ $('#categories').innerHTML=categories.map(c=>`<button class="chip ${category===c?'active':''}" data-category="${c}" aria-pressed="${category===c}">${c}</button>`).join('');
+
+}
+
+const groupDescriptions={
+
+'수업·평가':'수업 설계 · 학습 활동 · 과정중심 평가',
+
+'기초학력':'수준별 자료 · 보충 학습 · 배움의 변화',
+
+'진로·창체':'흥미 탐색 · 독서 · 발표 · 동아리',
+
+'학급·행정':'가정통신문 · 체험학습 · 공문 · 협의',
+
+'기록·상담':'학습 기록 · 관찰 메모 · 학부모 소통',
+
+'자료·콘텐츠':'슬라이드 · 그림 · 영상 구상 · 데이터 정리'
+
+};
+
+function groupKey(c,criterion){
+
+ if(criterion==='subject')return c.subject;
+
+ if(criterion==='bands')return c.profile==='work'?'교직원 업무':c.bands==='전체'?'학년별 조정 자료':c.bands==='3~4·5~6'?'3–6학년':c.bands+'학년';
+
+ return c.category;
+
+}
+
+function renderGroups(list){
+
+ const criterion=$('#groupby').value;
+
+ const groups=new Map();
+
+ for(const c of list){const key=groupKey(c,criterion);if(!groups.has(key))groups.set(key,[]);groups.get(key).push(c)}
+
+ let names=[...groups.keys()];
+
+ if(criterion==='category')names.sort((a,b)=>categories.indexOf(a)-categories.indexOf(b));
+
+ if(criterion==='subject'){const order=elementarySubjects;names.sort((a,b)=>order.indexOf(a)-order.indexOf(b))}
+
+ if(criterion==='bands')names.sort((a,b)=>a.localeCompare(b,'ko'));
+
+ $('#groupcount').textContent=names.length+'개 분류 · 원하는 항목을 펼쳐 보세요';
+
+ $('#grid').innerHTML=names.map((name,index)=>{
+
+  const items=groups.get(name),key=criterion+':'+name;
+
+  const icon=criterion==='category'?icons[name]:criterion==='subject'?'▤':'▦';
+
+  const description=criterion==='category'?($('#workrole').value?$('#workrole').value+' · '+items.slice(0,2).map(c=>c.title).join(' / '):groupDescriptions[name]):criterion==='subject'?name+' 관련 수업과 업무에 활용하는 사례':'학년 수준에 맞는 사례를 선택하고 내용을 조정하세요';
+
+  return `<details class="case-group" data-group="${esc(key)}" ${openGroup===key?'open':''}><summary><span class="group-icon" style="background:${criterion==='category'?colors[name]:'#edf3e9'}" aria-hidden="true">${icon}</span><span class="group-heading"><strong>${esc(name)}</strong><small>${esc(description)}</small></span><span class="group-count">${items.length}개 사례</span><span class="group-arrow" aria-hidden="true">⌄</span></summary><div class="group-cards">${items.map(cardHTML).join('')}</div></details>`;
+
+ }).join('');
+
+ $('#grid').querySelectorAll('details').forEach(d=>d.addEventListener('toggle',()=>{
+
+  if(d.open){openGroup=d.dataset.group;$('#grid').querySelectorAll('details').forEach(other=>{if(other!==d)other.open=false})}
+
+  else if(openGroup===d.dataset.group)openGroup='';
+
+ }));
+
+}
+
+const viewNames={home:'표지',custom:'나의 맞춤 활용',summary:'한눈에 보는 결론',pricing:'요금·기능 비교',fit:'학교 업무별 적합도 평가',cases:'활용 사례',favorites:'저장한 사례',builder:'맞춤 프롬프트',tools:'도구별 핵심 기능 사용법',recommend:'추천 조합·활용 로드맵',check:'주의점·사용 전 확인'};
+
+viewNames.home='표지';
+
+function setView(v){
+
+ if(!Object.hasOwn(viewNames,v))return;
+
+ view=v;
+
+ for(const n of ['home','custom','summary','pricing','fit','builder','tools','recommend','check'])$('#'+n+'view').hidden=v!==n;
+
+ $('#caseview').hidden=!['cases','favorites'].includes(v);
+
+ document.querySelectorAll('[data-view]').forEach(b=>{b.classList.toggle('active',b.dataset.view===v);if(b.dataset.view===v)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});
+
+ $('#breadcrumb').textContent='교무실 / '+viewNames[v];
+
+ $('#caseheading').textContent=v==='favorites'?'다시 꺼내 쓰는 나의 사례':'활용 사례 둘러보기';
+
+ document.body.classList.remove('menu-open');$('#menu').setAttribute('aria-expanded','false');
+
+ render();if(v==='builder')prepareBuilder();
+
+}
+
+function reset(){category='전체';$('#workrole').value='';$('#side-search').value='';$('#side-subject').value='';openGroup='';$('#groupby').value='category';$('#search').value='';$('#grade').value='';$('#subject').value='';render()}
+
+function ageGuide(g){const n=parseInt(g);return n<=2?'한 문장에 한 가지 안내를 담고 그림·구체물·놀이 중심으로 구성해 줘. 읽기와 쓰기 부담을 줄이고 구술·가리키기 응답을 허용해 줘.':n<=4?'생활 속 구체적 상황과 관찰·조작 활동을 중심으로 구성해 줘. 핵심 낱말을 풀어 쓰고 짧은 문장 틀을 제공해 줘.':'학생이 질문하고 선택하며 근거를 들어 설명하도록 구성해 줘. 모둠 협력, 수정 과정, 자기 성찰 기회를 포함해 줘.'}
+
+function selectedRoleFor(c){const r=$('#workrole').value;return matchRole(c,r)&&r?r:(c.roles[0]||'담당 교사')}
+
+function makePrompt(c,g){
+
+ const role=selectedRoleFor(c),isWork=c.profile==='work';
+
+ const intro=isWork?`너는 초등학교 ${role}의 실제 담당 업무를 돕는 동료야.`:`너는 초등학교 ${g} ${role}의 수업 설계를 돕는 동료야.`;
+
+ const context=isWork?`[업무 범위]\n${c.desc}\n수업 지도안이나 학생 활동으로 바꾸지 말고 요청한 업무 산출물을 작성해 줘.`:`[대상] 초등학교 ${g} / ${c.subject}\n${ageGuide(g)}\n배우지 않은 개념은 해당 학년 교육과정에 맞춰 바꾼 이유를 밝혀 줘.`;
+
+ const gradeContext=/^[1-6]학년부$/.test(role)?`\n[학년부 맥락] ${role[0]}학년의 학교생활과 학년 협의 수준에 맞춰 줘.`:'';
+
+ return `${intro}\n\n[작업] ${c.title}\n[담당] ${role}\n${context}${gradeContext}\n\n[연습용 가상 자료]\n${c.example}\n\n[요청]\n${c.task}\n\n[작성 원칙]\n${isWork?'- 업무의 대상·확정 사항·검토/제안 사항을 구분해 줘.':'- 수업은 별도 조건이 없으면 40분을 기본으로 설계해 줘.'}\n- 제공하지 않은 일정·학교 규정·성취기준·관찰 사실·수치·담당자를 만들어 내지 마.\n- 확인되지 않은 내용은 [확인 필요]로 남겨 줘.\n- 실제 학생·교직원의 이름·연락처·상담 내용 등 개인정보는 요청하지 마.\n- 판단·승인·평가의 최종 결정은 담당 교사가 확인하도록 해 줘.\n\n[최종 확인]\n${c.check}`;
+
+}
+
+function draftKey(c,g){return c.id+':'+(c.profile==='work'?selectedRoleFor(c):g)}
+
+function openCase(id){
+
+ current=cases.find(c=>c.id===id);if(!current)return;
+
+ $('#detailmeta').textContent=`CASE ${String(id).padStart(2,'0')} · ${current.category} · 담당: ${current.roles.join(' / ')}`;
+
+ $('#detailtitle').textContent=current.title;$('#detaildesc').textContent=current.desc;$('#dresult').textContent=current.result;$('#dcheck').textContent=current.check;
+
+ const role=$('#workrole').value,requested=$('#grade').value||(/^[1-6]학년부$/.test(role)?role[0]+'학년':'');
+
+ const n=requested?Math.min(current.maxGrade,Math.max(current.minGrade,parseInt(requested))):current.minGrade;
+
+ $('#detailgrade').value=n+'학년';$('#detailgrade').parentElement.hidden=current.profile==='work';
+
+ $('#prompt').value=promptDrafts.get(draftKey(current,$('#detailgrade').value))||makePrompt(current,$('#detailgrade').value);
+
+ $('#detailsteps').innerHTML=(current.profile==='work'?['담당 업무와 요청 산출물을 확인해요.','가상 자료를 공개 가능한 업무 자료로 바꿔요.','프롬프트를 편집·복사해 사용해요.','원문·학교 기준과 대조하고 확정 사항을 검토해요.']:['학년과 학습 범위를 확인해요.','예시 자료를 우리 수업 내용으로 바꿔요.','프롬프트를 편집·복사해 사용해요.','결과를 교과서·관찰과 대조하고 수정해요.']).map(x=>'<li>'+esc(x)+'</li>').join('');
+
+ updateSave();$('#detail').showModal();$('#detail').scrollTop=0;
+
+}
+
+let builderRoleContext=null;
+
+function updateBuilderSubjects(){
+
+ const grade=parseInt($('#bgrade').value)||5,previous=$('#bsubject').value;
+
+ const available=grade<=2?['통합','국어','수학','창체']:grade<=4?['국어','도덕','사회','수학','과학','체육','음악','미술','영어','창체']:['국어','도덕','사회','수학','과학','실과','체육','음악','미술','영어','창체'];
+
+ $('#bsubject').innerHTML=available.map(n=>`<option>${n}</option>`).join('');$('#bsubject').value=available.includes(previous)?previous:grade<=2?'통합':'과학';
+
+}
+
+function configureBuilder(){
+
+ const isWork=$('#bmode').value==='work';
+
+ $('#bgrade-wrap').hidden=isWork;$('#bsubject-wrap').hidden=isWork;
+
+ $('#builder-role-note').textContent='담당 업무: '+($('#workrole').value||'공통')+(isWork?' · 학교 업무 문서에는 수업 시간·학생 활동 조건을 붙이지 않습니다.':' · 학년과 교과 범위를 확인하세요.');
+
+ const values=isWork?['업무 요약서와 확인 목록','운영 계획서 초안','업무 안내문 초안','협의록과 후속 할 일','자료 점검표']:['40분 수업 지도안과 활동지','수준별 보충 학습지','과정중심 평가표','수업용 HTML 퀴즈 제작 지침'];
+
+ $('#breference-label').textContent=isWork?'학교 양식·참고 자료 (선택)':'성취기준·참고 자료 (선택)';const prior=$('#boutput').value;
+
+ $('#boutput').innerHTML=values.map(v=>`<option>${v}</option>`).join('');if(values.includes(prior))$('#boutput').value=prior;
+
+}
+
+function prepareBuilder(){
+
+ const role=$('#workrole').value;const contextChanged=builderRoleContext!==role;
+
+ if(builderRoleContext!==role){
+
+  $('#bmode').value=role&&!['담임','교과전담'].includes(role)?'work':'teaching';
+
+  if(!$('#btopic').value||['생활 속 문제를 해결하는 발명 아이디어','부서별 현안과 결정 요청 정리'].includes($('#btopic').value))$('#btopic').value=$('#bmode').value==='work'?'부서별 현안과 결정 요청 정리':'생활 속 문제를 해결하는 발명 아이디어';
+
+  builderRoleContext=role;
+
+ }
+
+ if(contextChanged){if($('#grade').value)$('#bgrade').value=$('#grade').value;updateBuilderSubjects();const subject=$('#side-subject').value;if(Array.from($('#bsubject').options||[]).some(o=>o.value===subject))$('#bsubject').value=subject;}configureBuilder();if(contextChanged||!$('#builderresult').value)generate();
+
+}
+
+function generate(){
+
+ const isWork=$('#bmode').value==='work',role=$('#workrole').value||'담당 교사',g=$('#bgrade').value,ref=$('#breference').value.trim();
+
+ const context=isWork?`[담당 업무] ${role}\n[작업 유형] 학교 업무 문서`:`[대상] 초등학교 ${g}\n[교과] ${$('#bsubject').value}`;
+
+ const rules=isWork?'1. 확정 사항·검토 사항·제안을 구분해 줘.\n2. 담당·기한·예산은 제공된 사실만 쓰고 없으면 [확인 필요]로 남겨 줘.\n3. 자료의 근거와 후속 확인 목록을 함께 제시해 줘.':`1. ${ageGuide(g)}\n2. 수업은 40분을 기본으로 학생의 질문·선택·수정 기회를 포함해 줘.\n3. 교사·학생 활동, 시간, 지원, 관찰 근거와 피드백을 구분해 줘.`;
+
+ $('#builderresult').value=`너는 초등학교 ${role}의 ${isWork?'업무 문서 작성을':'수업 설계를'} 돕는 동료야.\n\n${context}\n[주제] ${$('#btopic').value.trim()}\n[결과물] ${$('#boutput').value}\n[대상·조건]\n${$('#bcontext').value.trim()||'추가 조건 없음'}\n\n[참고 자료]\n${ref||'별도 자료 없음. 학교 기준과 사실관계가 필요한 곳은 [확인 필요]로 남겨 줘.'}\n\n[설계 원칙]\n${rules}\n4. 실제 학생·교직원의 개인정보를 요청하지 마.\n5. 제공하지 않은 일정·관찰·법령·학교 규정·성취기준·수치를 만들지 마.\n6. 표와 짧은 문장으로 작성하고 담당 교사가 확인할 사항을 마지막에 정리해 줘.`;
+
+}
+
+const checkItems=[['학생 정보는 빼거나 가상 자료로 바꿨나요?','이름·얼굴·연락처·상담 내용 등 개인을 알아볼 수 있는 정보가 없는지 확인해요.'],['우리 학년의 수준과 교육과정에 맞나요?','학년을 바꿨더라도 주제·어휘·계산·활동 범위를 따로 확인해요.'],['정답과 근거를 직접 대조했나요?','숫자는 검산하고, 사실은 교과서·제공 원문과 비교해요.'],['평가·기록에 실제 관찰만 사용했나요?','학생의 능력이나 행동을 AI가 덧붙이지 않았는지 살펴봐요.'],['이용 조건과 공개 범위를 확인했나요?','이미지·글의 출처와 이용 조건, 학생 서비스 이용 시 연령·계정 정책을 확인해요.'],['최종 자료를 직접 읽고 수정했나요?','날짜·장소·규정·화면 가독성을 확인하고 교사의 판단으로 완성해요.']];
+
+function renderChecks(){$('#checklist').innerHTML=checkItems.map((x,i)=>`<label class="check-item"><input type="checkbox" data-check="${i}" ${checks.includes(i)?'checked':''}><span><b>${esc(x[0])}</b><small>${esc(x[1])}</small></span></label>`).join('');$('#checknumber').textContent=`${checks.length}/6`}
+
+$('#case-subnav-toggle').addEventListener('click',()=>{subnavCollapsed=!subnavCollapsed;persist('elementary-ai-subnav-collapsed',subnavCollapsed);updateSubnavVisibility()});
+
+$('#case-subnav').addEventListener('click',e=>{const b=e.target.closest('[data-jump-category]');if(b)jumpToCategory(b.dataset.jumpCategory)});
+
+$('#grid').addEventListener('click',e=>{const summary=e.target.closest('.case-group > summary');if(summary){const group=summary.parentElement;if(!group.open&&group.dataset.group.startsWith('category:')){recordCategoryUse(group.dataset.group.slice(9));renderCaseSubnav()}}const f=e.target.closest('[data-fav]'),o=e.target.closest('[data-open]');if(f)toggleFavorite(Number(f.dataset.fav));else if(o)openCase(Number(o.dataset.open))});$('#categories').addEventListener('click',e=>{const b=e.target.closest('[data-category]');if(b){category=b.dataset.category;recordCategoryUse(category);render()}});
+
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>{setView(b.dataset.view);$('#main').scrollIntoView({block:'start',behavior:'instant'})}));$('#groupby').addEventListener('change',()=>{openGroup='';render()});$('#search').addEventListener('input',()=>{$('#side-search').value=$('#search').value;render()});$('#grade').addEventListener('change',render);$('#subject').addEventListener('change',()=>{$('#side-subject').value=$('#subject').value;render()});$('#reset').onclick=reset;$('#emptyreset').onclick=()=>{setView('cases');reset()};$('#start').onclick=()=>{setView('builder');$('#builderview').scrollIntoView({behavior:'smooth',block:'start'})};$('#menu').onclick=()=>{const open=document.body.classList.toggle('menu-open');$('#menu').setAttribute('aria-expanded',open)};
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.body.classList.contains('menu-open')){document.body.classList.remove('menu-open');$('#menu').setAttribute('aria-expanded','false');$('#menu').focus()}});
+
+document.addEventListener('click',e=>{if(document.body.classList.contains('menu-open')&&!e.target.closest('#sidebar')&&!e.target.closest('#menu')){document.body.classList.remove('menu-open');$('#menu').setAttribute('aria-expanded','false')}});
+
+$('#close').onclick=()=>$('#detail').close();$('#detail').addEventListener('click',e=>{if(e.target===$('#detail')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close()}});$('#detailgrade').onchange=()=>{$('#prompt').value=promptDrafts.get(draftKey(current,$('#detailgrade').value))||makePrompt(current,$('#detailgrade').value);toast('선택한 학년의 프롬프트를 열었어요.')};$('#prompt').addEventListener('input',()=>{if(current)promptDrafts.set(draftKey(current,$('#detailgrade').value),$('#prompt').value)});$('#copy').onclick=()=>copy($('#prompt').value,$('#prompt'));$('#save').onclick=()=>toggleFavorite(current.id);$('#casedownload').onclick=()=>download($('#prompt').value,`초등AI_사례${current.id}_프롬프트.txt`);
+
+$('#bgrade').addEventListener('change',updateBuilderSubjects);$('#bmode').addEventListener('change',()=>{configureBuilder();generate()});$('#builderform').onsubmit=e=>{e.preventDefault();generate();toast('맞춤 프롬프트를 만들었어요. 복사해서 사용하세요.')};$('#buildercopy').onclick=()=>copy($('#builderresult').value,$('#builderresult'));$('#builderdownload').onclick=()=>download($('#builderresult').value,'초등AI_맞춤프롬프트.txt');
+
+$('#checklist').addEventListener('change',e=>{const i=Number(e.target.dataset.check);if(!Number.isInteger(i))return;checks=e.target.checked?[...new Set([...checks,i])]:checks.filter(n=>n!==i);persist('elementary-ai-checks',checks);$('#checknumber').textContent=`${checks.length}/6`});$('#checkreset').onclick=()=>{checks=[];persist('elementary-ai-checks',checks);renderChecks()};$('#printcheck').onclick=()=>window.print();
+
+$('#caseprint').onclick=()=>{const text=document.createElement('div');text.className='print-prompt';text.textContent=$('#prompt').value;$('#prompt').after(text);const style=document.createElement('style');style.textContent='@media print{#prompt{display:none!important}}@media screen{.print-prompt{display:none}}';document.head.append(style);window.print();text.remove();style.remove()};
+
+function matchSubject(c,subject){return !subject||c.subject===subject}
+
+function matchRole(c,role){
+
+ if(!role)return true;
+
+ if(/^[1-6]학년부$/.test(role))return c.roles.includes('학년부');
+
+ return c.roles.includes(role);
+
+}
+
+function cardHTML(c){return `<article class="card"><div class="card-top"><span class="case-icon" style="background:${colors[c.category]}" aria-hidden="true">${icons[c.category]}</span><span class="cat-label">${esc(c.category)}</span><button class="star ${favorites.has(c.id)?'saved':''}" data-fav="${c.id}" aria-label="${esc(c.title)} ${favorites.has(c.id)?'저장 취소':'저장'}" aria-pressed="${favorites.has(c.id)}">${favorites.has(c.id)?'★':'☆'}</button></div><button class="card-content" data-open="${c.id}" aria-label="${esc(c.title)} 사례 열기"><h3>${esc(c.title)}</h3><p>${esc(c.desc)}</p><div class="tags"><span>${esc(c.subject==='공통'?'교과 외 업무':c.subject)}</span><span>${c.profile==='work'?'업무 문서':esc(c.minGrade+'–'+c.maxGrade+'학년')}</span><span>${esc(c.roles.join(' · '))}</span></div></button><div class="card-bottom"><span>CASE ${String(c.id).padStart(2,'0')}</span><span>프롬프트 보기 ↗</span></div></article>`}
+
+function renderCustom(){
+
+ const role=$('#workrole').value,subject=$('#side-subject').value,q=$('#side-search').value.trim(),grade=$('#grade').value;
+
+ $('#selection-summary').textContent=filterDescription();
+
+ $('#matching-rule').textContent=role?(/^[1-6]학년부$/.test(role)?role+'의 공동 운영·교육과정 협의 업무를 보여 줍니다. 교과 수업 자료는 담임 또는 교과전담에서 찾으세요.':roleDescriptions[role]):'업무를 선택하면 실제 담당자와 산출물을 기준으로 분류한 사례만 표시합니다. 교과 외 업무와 교과 공통 자료는 서로 구분합니다.';
+
+ const active=Boolean(role||subject||q||grade);$('#customintro').hidden=active;
+
+ const list=active?filteredCases():[];
+
+ $('#customcount').textContent=active?'현재 조건 '+list.length+'개 사례 · 업무·과목·학년·검색 조건을 함께 적용':'';
+
+ $('#customempty').hidden=!active||list.length>0;
+
+ $('#customgrid').innerHTML=categories.filter(n=>n!=='전체').map(n=>{const items=list.filter(c=>c.category===n);return items.length?`<section class="custom-group"><h3>${esc(n)} <span>${items.length}개</span></h3><div class="grid">${items.map(cardHTML).join('')}</div></section>`:''}).join('');
+
+}
+
+const fitData=[
+
+ ['수업 지도안·활동지','A','A','A','세 도구에 같은 조건을 넣어 수정 시간 비교'],
+
+ ['긴 협의록·보고서 초안','A','B','B','문서 구조와 문체 일관성 중심으로 시험'],
+
+ ['관찰 메모·기록 문장 점검','A','B','B','근거 보존과 없는 사실 추가 여부 확인'],
+
+ ['수업 삽화·포스터 이미지','C','A','A','해당 이미지 생성 기능과 이용 조건 확인'],
+
+ ['영어 대화 시범·발표 연습','B','A','B','음성 기능의 제공 범위와 학년별 표현 확인'],
+
+ ['설문·표·수치 분석','B','A','A','파일 분석 또는 시트 환경에 맞춰 비교'],
+
+ ['구글 문서·시트 업무 연결','C','B','A','학교 계정의 앱 연동과 계약 범위 확인'],
+
+ ['HTML 활동지·퀴즈 구상','A','B','B','미리보기·파일 저장·수정 흐름 비교'],
+
+ ['가정통신문·안내 문자','A','A','A','일정·누락 정보·학부모가 할 일 확인'],
+
+ ['공문 요약·할 일 추출','A','A','A','제출 기한과 근거 문장 원문 대조'],
+
+ ['교육과정·매뉴얼 근거 확인','B','B','A','제공 문서 기반 도구를 병행하고 출처 대조'],
+
+ ['엑셀 수식·자료 수합 설계','A','A','B','파일 읽기 지원과 수식 범위를 가상 자료로 확인']
+
+];
+
+function setupWorkspace(){
+
+ $('#workrole').innerHTML='<option value="">전체 업무</option>'+schoolRoles.map(n=>`<option value="${n}">${n}</option>`).join('');
+
+ const options='<option value="">전체 과목</option>'+elementarySubjects.map(n=>`<option value="${n}">${n==='공통'?'교과 외 업무':n==='통합'?'통합(1–2학년)':n}</option>`).join('');
+
+ $('#side-subject').innerHTML=options;$('#subject').innerHTML=options;
+
+ $('#rolequick').innerHTML=['담임','교무부','연구부','정보부','관리자','교과전담'].map(n=>`<button class="chip" data-role-quick="${n}">${n} 사례 보기</button>`).join('');
+
+ $('#navcasecount').textContent=cases.length;document.querySelectorAll('[data-case-total]').forEach(e=>e.textContent=cases.length);
+
+ $('#fitrows').innerHTML=fitData.map(row=>`<tr><th scope="row">${esc(row[0])}</th>${row.slice(1,4).map(v=>`<td class="fit-cell"><span class="fit-badge fit-${v}" aria-label="${v==='A'?'A 먼저 시험할 도구':v==='B'?'B 함께 비교할 도구':'C 별도 기능·계약 확인'}">${v}</span></td>`).join('')}<td>${esc(row[4])}</td></tr>`).join('');
+
+ const choose=()=>{category='전체';openGroup='';$('#subject').value=$('#side-subject').value;$('#search').value=$('#side-search').value;setView('custom');$('#customview').scrollIntoView({block:'start',behavior:'instant'})};
+
+ $('#workrole').addEventListener('change',()=>{$('#grade').value='';choose()});$('#side-subject').addEventListener('change',choose);
+
+ $('#side-search').addEventListener('input',()=>{const keepMenu=document.body.classList.contains('menu-open');category='전체';openGroup='';$('#subject').value=$('#side-subject').value;$('#search').value=$('#side-search').value;setView('custom');if(keepMenu){document.body.classList.add('menu-open');$('#menu').setAttribute('aria-expanded','true')}});$('#side-search').addEventListener('keydown',e=>{if(e.key==='Enter'){document.body.classList.remove('menu-open');$('#menu').setAttribute('aria-expanded','false');$('#customview').scrollIntoView({block:'start',behavior:'instant'})}});
+
+ const clear=()=>{reset();renderCustom()};$('#side-reset').onclick=clear;$('#customclear').onclick=clear;document.querySelectorAll('[data-clear-filter]').forEach(b=>b.addEventListener('click',()=>{const f=b.dataset.clearFilter;if(f==='subject'){$('#side-subject').value='';$('#subject').value=''}if(f==='search'){$('#side-search').value='';$('#search').value=''}if(f==='grade')$('#grade').value='';if(f==='role')$('#workrole').value='';render()}));
+
+ $('#rolequick').addEventListener('click',e=>{const b=e.target.closest('[data-role-quick]');if(b){$('#workrole').value=b.dataset.roleQuick;choose()}});
+
+ $('#customgrid').addEventListener('click',e=>{const f=e.target.closest('[data-fav]'),o=e.target.closest('[data-open]');if(f)toggleFavorite(Number(f.dataset.fav));else if(o)openCase(Number(o.dataset.open))});
+
+ document.addEventListener('click',e=>{const route=e.target.closest('[data-route]'),cat=e.target.closest('[data-category-route]');if(route){setView(route.dataset.route);$('#main').scrollIntoView({block:'start',behavior:'instant'})}else if(cat)jumpToCategory(cat.dataset.categoryRoute)});
+
+ $('.brand').addEventListener('click',e=>{e.preventDefault();setView('home');$('#main').scrollIntoView({block:'start',behavior:'instant'})});
+
+}
+
+function setTextSize(size){
+
+ const selected=size==='large'?'large':'normal';
+
+ document.documentElement.dataset.textSize=selected;
+
+ document.querySelectorAll('.size-button').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.textSize===selected)));
+
+ persist('elementary-ai-text-size',selected);
+
+}
+
+document.querySelectorAll('.size-button').forEach(button=>button.addEventListener('click',()=>setTextSize(button.dataset.textSize)));
+
+setTextSize(read('elementary-ai-text-size','normal'));
+
+setupWorkspace();renderChecks();setView('home');
+
